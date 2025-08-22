@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>הצהרת נגישות · תנאי שימוש · מדיניות פרטיות | ristar.co</title>
+  <meta name="description" content="עמוד משפטי מאוחד: הצהרת נגישות, תנאי שימוש ומדיניות פרטיות עבור ristar.co ותתי-הדומיינים." />
+  <style>
+    :root{
+      --bg: #ffffff;
+      --fg: #0f172a; /* slate-900 */
+      --muted: #475569; /* slate-600 */
+      --accent: #2563eb; /* blue-600 */
+      --card: #f8fafc; /* slate-50 */
+      --border: #e2e8f0; /* slate-200 */
+      --focus: #f59e0b; /* amber-500 */
+      --success: #16a34a;
+      --danger: #dc2626;
+    }
+    html.high-contrast{
+      --bg: #000;
+      --fg: #fff;
+      --muted: #e5e7eb;
+      --accent: #0ea5e9;
+      --card: #111827;
+      --border: #374151;
+      --focus: #22d3ee;
+    }
+
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--fg);font:400 18px/1.7 "Heebo","Rubik","Segoe UI","Arial",system-ui,sans-serif}
+    a{color:var(--accent);text-decoration:none}
+    a:focus,button:focus,[tabindex]:focus{outline:3px solid var(--focus);outline-offset:3px}
+    .wrap{max-width:1100px;margin-inline:auto;padding:clamp(12px,2vw,24px)}
+
+    /* כפתורי נגישות קבועים */
+    .a11y-toolbar{position:fixed;inset-inline-start:12px;bottom:12px;display:flex;flex-direction:column;gap:8px;z-index:20}
+    .a11y-toolbar button{border:1px solid var(--border);background:var(--card);color:var(--fg);padding:8px 10px;border-radius:12px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+    .a11y-toolbar button:hover{transform:translateY(-1px)}
+
+    header{position:sticky;top:0;background:var(--bg);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--border);z-index:10}
+    .topnav{display:flex;align-items:center;gap:16px;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:10px}
+    .logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#9333ea,#2563eb);display:grid;place-items:center;color:#fff;font-weight:700}
+    nav ul{display:flex;gap:10px;flex-wrap:wrap;margin:0;padding:0;list-style:none}
+    nav a{display:block;padding:10px 14px;border-radius:12px}
+    nav a:hover{background:var(--card)}
+
+    .hero{background:linear-gradient(180deg, var(--card), transparent);border-bottom:1px solid var(--border)}
+    .hero h1{font-size:clamp(28px,4vw,42px);margin:10px 0 6px}
+    .hero p{color:var(--muted);margin:0}
+
+    section{padding-block:28px;border-bottom:1px solid var(--border)}
+    h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px}
+    h3{font-size:clamp(18px,2.2vw,22px);margin:16px 0 8px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px}
+    .grid{display:grid;gap:14px}
+    @media (min-width:760px){.grid-2{grid-template-columns:1fr 1fr}}
+
+    .domains{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{border:1px solid var(--border);background:var(--bg);padding:6px 10px;border-radius:999px}
+
+    footer{padding:28px 0;color:var(--muted)}
+
+    /* מצב מיקוד ברור מאד */
+    :focus-visible{box-shadow:0 0 0 3px var(--focus)}
+
+    /* דילוג לתוכן */
+    .skip-link{position:absolute;inset-inline-start:12px;top:-60px;background:#111827;color:#fff;padding:10px 14px;border-radius:12px;z-index:50}
+    .skip-link:focus{top:12px}
+
+    /* קישורי עוגן */
+    .anchor{position:relative}
+    .anchor a.hash{position:absolute;inset-inline-end:-.6em;top:0;opacity:.3}
+
+    /* טופס יצירת קשר */
+    form{display:grid;gap:12px}
+    label{font-weight:600}
+    input,textarea{padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--fg)}
+    textarea{min-height:110px}
+    .actions{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{background:var(--accent);color:#fff;border:none;border-radius:12px;padding:10px 16px;cursor:pointer}
+    .btn.secondary{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+
+    /* אזור מתורגם */
+    #google_translate_element{display:inline-block;border:1px solid var(--border);padding:6px 10px;border-radius:10px;background:var(--bg)}
+
+    /* הדגשת קישורים בלוח מקשים */
+    a, button { transition: transform .05s ease }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">דלג/י לתוכן</a>
+
+  <!-- סרגל נגישות בסיסי -->
+  <div class="a11y-toolbar" role="region" aria-label="כלי נגישות">
+    <button type="button" id="incFont" aria-label="הגדלת גופן">A+</button>
+    <button type="button" id="decFont" aria-label="הקטנת גופן">A−</button>
+    <button type="button" id="contrast" aria-pressed="false" aria-label="מצב ניגודיות גבוהה">ניגודיות</button>
+  </div>
+
+  <header>
+    <div class="wrap topnav" role="navigation" aria-label="ניווט ראשי">
+      <div class="brand" aria-label="Rising Star / 2M Media">
+        <div class="logo" aria-hidden="true">RS</div>
+        <strong>ristar.co · עמוד משפטי</strong>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#access">הצהרת נגישות</a></li>
+          <li><a href="#terms">תנאי שימוש</a></li>
+          <li><a href="#privacy">מדיניות פרטיות</a></li>
+          <li><a href="#contact">יצירת קשר</a></li>
+          <li><span id="google_translate_element" aria-label="בחירת שפה"></span></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap" tabindex="-1">
+    <section class="hero" aria-labelledby="title">
+      <h1 id="title">הצהרת נגישות · תנאי שימוש · מדיניות פרטיות</h1>
+      <p>עמוד מאוחד עבור <strong>www.ristar.co</strong> ותתי-הדומיינים: results.ristar.co, registration.ristar.co, law.ristar.co.</p>
+    </section>
+
+    <!-- הצהרת נגישות -->
+    <section id="access" class="grid">
+      <div class="anchor"><h2>הצהרת נגישות</h2></div>
+      <div class="card grid grid-2">
+        <div>
+          <h3>המסגרת המשפטית והמחויבות</h3>
+          <p>
+            חברת <strong>2M Media Creative Agency (ETUDE ח"פ 346776909)</strong> פועלת לקידום נגישות דיגיטלית בהתאם ל<strong>תקן הישראלי 5568 (מבוסס WCAG 2.0 AA)</strong>.
+            אנו משקיעים מאמצים כדי שכל הגולשות והגולשים, לרבות אנשים עם מוגבלות, יוכלו להשתמש באתרינו בנוחות.
+          </p>
+          <p>
+            בשלב זה האתר/ים בתהליך הטמעת התאמות נגישות. עם הגעה למחזור שנתי של <strong>100,000 ₪</strong> ומעלה, ניישם באופן מלא את החובות החלות לפי דין.
+          </p>
+          <h3>תחולה</h3>
+          <div class="domains" aria-label="רשימת דומיינים בתחולה">
+            <span class="chip" aria-label="דומיין">www.ristar.co</span>
+            <span class="chip" aria-label="תת-דומיין">results.ristar.co</span>
+            <span class="chip" aria-label="תת-דומיין">registration.ristar.co</span>
+            <span class="chip" aria-label="תת-דומיין">law.ristar.co</span>
+          </div>
+        </div>
+        <div>
+          <h3>התאמות עיקריות</h3>
+          <ul>
+            <li>ניווט מלא באמצעות מקלדת והתמקדות (Focus) מובחנת.</li>
+            <li>טקסט חלופי לתמונות ותיאורי כפתורים.</li>
+            <li>יחסי ניגודיות לפי ההנחיות וכפתור ניגודיות גבוהה.</li>
+            <li>מבנה סמנטי וכותרות היררכיות (H1–H3) ואריה (ARIA) לפי הצורך.</li>
+            <li>תמיכה בהגדלה/הקטנה של גודל גופן.</li>
+          </ul>
+          <h3>פניות בנושא נגישות</h3>
+          <p>אם נתקלתם בקושי נגישות, נשמח לסייע:</p>
+          <ul>
+            <li>מיכאל מוקרושוב — <a href="tel:+972547798676" rel="nofollow">054-7798676</a></li>
+            <li>דוא"ל: <a href="mailto:2mmedia.il@gmail.com">2mmedia.il@gmail.com</a></li>
+          </ul>
+          <p>אנא ציינו תיאור הבעיה, הדפדפן והמכשיר, וקישור לעמוד הרלוונטי.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- תנאי שימוש -->
+    <section id="terms" class="grid">
+      <div class="anchor"><h2>תנאי שימוש</h2></div>
+      <div class="card">
+        <h3>כללי</h3>
+        <p>
+          תנאים אלה חלים על השימוש באתר <strong>ristar.co</strong> ותתי-הדומיינים שלו (results.ristar.co, registration.ristar.co, law.ristar.co). השימוש באתר מהווה את הסכמתך לתנאים אלה.
+        </p>
+
+        <h3>מטרת האתר</h3>
+        <ul>
+          <li>דף נחיתה לפרסום מוצר/שירות.</li>
+          <li>רישום לאירועים של מארגן חיצוני.</li>
+          <li>פרסום תוצאות תחרויות מטעם מארגן חיצוני המופעלות באמצעות <strong>Rising Star Manager</strong>.</li>
+        </ul>
+
+        <h3>תוכן משתמשים ותשלומים</h3>
+        <ul>
+          <li>אין אפשרות ליצירת תוכן משתמשים (תגובות/עלאות קבצים וכד').</li>
+          <li>אין תשלומים באתר.</li>
+        </ul>
+
+        <h3>הגבלת אחריות</h3>
+        <p>
+          <strong>2M Media</strong> אינה אחראית לתוכן, לארגון או לקיום האירועים המתפרסמים/מתופעלים באמצעות Rising Star Manager. האחריות מוטלת על המארגן החיצוני.
+        </p>
+
+        <h3>קניין רוחני</h3>
+        <p>
+          אלא אם צוין אחרת, זכויות הקניין הרוחני (טקסטים, לוגו, עיצוב וכד') שייכות ל-2M Media. אין להעתיק, להפיץ או לבצע שימוש מסחרי ללא אישור בכתב.
+        </p>
+
+        <h3>שינויים</h3>
+        <p>
+          ייתכן כי נעדכן תנאים אלה מעת לעת. המשך השימוש באתר לאחר שינוי מהווה הסכמה לתנאים המעודכנים.
+        </p>
+      </div>
+    </section>
+
+    <!-- מדיניות פרטיות -->
+    <section id="privacy" class="grid">
+      <div class="anchor"><h2>מדיניות פרטיות</h2></div>
+      <div class="card grid grid-2">
+        <div>
+          <h3>אילו נתונים נאספים</h3>
+          <ul>
+            <li>שם מלא</li>
+            <li>דוא"ל</li>
+            <li>טלפון</li>
+            <li>נתונים סטטיסטיים אנונימיים באמצעות Google Analytics (כגון כתובת IP, דפים נצפים וזמני ביקור)</li>
+          </ul>
+          <h3>למה אנחנו משתמשים בנתונים</h3>
+          <ul>
+            <li>עיבוד רישום לאירועים ותקשורת עם הנרשמים.</li>
+            <li>שיפור תפעול האתר וניתוח שימוש.</li>
+          </ul>
+          <h3>שיתוף מידע</h3>
+          <p>איננו משתפים מידע אישי עם צדדים שלישיים, למעט אם קיימת חובה חוקית.</p>
+        </div>
+        <div>
+          <h3>Cookies וטכנולוגיות דומות</h3>
+          <p>האתר עושה שימוש בקובצי Cookies לצורך אנליטיקה וחוויית שימוש. ניתן לחסום Cookies דרך הגדרות הדפדפן.</p>
+          <h3>אבטחת מידע</h3>
+          <p>ננקטות אמצעי אבטחה סבירים להגן על המידע האישי.</p>
+          <h3>דין וסמכות שיפוט</h3>
+          <p>המדיניות כפופה לדיני מדינת ישראל.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- יצירת קשר -->
+    <section id="contact" class="grid">
+      <div class="anchor"><h2>יצירת קשר</h2></div>
+      <div class="card">
+        <form aria-describedby="contactHelp" onsubmit="event.preventDefault(); contactAck();">
+          <p id="contactHelp" class="muted">נשמח לסייע בכל נושא משפטי/נגישות. ניתן גם לפנות ישירות בטלפון או במייל.</p>
+          <div>
+            <label for="name">שם מלא</label>
+            <input id="name" name="name" type="text" autocomplete="name" required />
+          </div>
+          <div>
+            <label for="email">דוא"ל</label>
+            <input id="email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <div>
+            <label for="message">פנייה</label>
+            <textarea id="message" name="message" placeholder="תאר/י את הבקשה או בעיית הנגישות"></textarea>
+          </div>
+          <div class="actions">
+            <button class="btn" type="submit">שליחה</button>
+            <a class="btn secondary" href="mailto:2mmedia.il@gmail.com?subject=%D7%A4%D7%A0%D7%99%D7%99%D7%94%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8">שליחה בדוא"ל</a>
+            <a class="btn secondary" href="tel:+972547798676">התקשרות</a>
+          </div>
+          <div aria-live="polite" id="ack" style="margin-top:8px"></div>
+        </form>
+      </div>
+    </section>
+
+    <footer class="wrap" role="contentinfo">
+      <p>
+        © <span id="year"></span> 2M Media Creative Agency (ETUDE ח"פ 346776909). כל הזכויות שמורות. | 
+        <a href="#access">נגישות</a> · <a href="#terms">תנאים</a> · <a href="#privacy">פרטיות</a>
+      </p>
+    </footer>
+  </main>
+
+  <!-- Google Translate: מחולל תרגום אוטומטי של גוגל -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'he', includedLanguages: 'en,ru,uk,ar,fr,es,de', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <script>
+    // שנה נוכחית בפוטר
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // התאמות נגישות: גודל גופן וניגודיות גבוהה
+    const htmlEl = document.documentElement;
+    let fontScale = 1; // בסיס
+    const minScale = 0.85;
+    const maxScale = 1.4;
+
+    document.getElementById('incFont').addEventListener('click', () => {
+      fontScale = Math.min(maxScale, +(fontScale + 0.05).toFixed(2));
+      htmlEl.style.fontSize = fontScale + 'em';
+      announce(`גודל גופן ${Math.round(fontScale*100)}%`);
+    });
+    document.getElementById('decFont').addEventListener('click', () => {
+      fontScale = Math.max(minScale, +(fontScale - 0.05).toFixed(2));
+      htmlEl.style.fontSize = fontScale + 'em';
+      announce(`גודל גופן ${Math.round(fontScale*100)}%`);
+    });
+    const contrastBtn = document.getElementById('contrast');
+    contrastBtn.addEventListener('click', () => {
+      const on = htmlEl.classList.toggle('high-contrast');
+      contrastBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      announce(on ? 'מצב ניגודיות גבוהה הופעל' : 'מצב ניגודיות גבוהה בוטל');
+    });
+
+    // ARIA live להודעות קצרות
+    const live = document.createElement('div');
+    live.setAttribute('aria-live','polite');
+    live.className = 'sr-only';
+    live.style.position = 'absolute';
+    live.style.width = '1px';
+    live.style.height = '1px';
+    live.style.overflow = 'hidden';
+    live.style.clip = 'rect(1px, 1px, 1px, 1px)';
+    document.body.appendChild(live);
+    function announce(msg){ live.textContent = ''; setTimeout(()=> live.textContent = msg, 50); }
+
+    function contactAck(){
+      const ack = document.getElementById('ack');
+      ack.textContent = 'ההודעה נשלחה (הדגמה). ניצור קשר בקרוב.';
+      ack.style.color = 'var(--success)';
+      announce('הטופס נשלח בהצלחה');
+    }
+  </script>
+</body>
+</html>
