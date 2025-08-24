@@ -1,23 +1,46 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <title>הצהרת נגישות · תנאי שימוש · מדיניות פרטיות | ristar.co</title>
-  <meta name="description" content="עמוד משפטי מאוחד: הצהרת נגישות, תנאי שימוש ומדיניות פרטיות עבור ristar.co ותתי-הדומיינים." />
+  <meta name="description" content="עמוד משפטי מאוחד: הצהרת נגישות, תנאי שימוש ומדיניות פרטיות עבור ristar.co ותתי-הדומיינים.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📄</text></svg>">
   <style>
-    :root{
+    :root {
       --bg: #ffffff;
-      --fg: #0f172a; /* slate-900 */
-      --muted: #475569; /* slate-600 */
-      --accent: #2563eb; /* blue-600 */
-      --card: #f8fafc; /* slate-50 */
-      --border: #e2e8f0; /* slate-200 */
-      --focus: #f59e0b; /* amber-500 */
+      --fg: #0f172a;
+      --muted: #475569;
+      --accent: #2563eb;
+      --card: #f8fafc;
+      --border: #e2e8f0;
+      --focus: #f59e0b;
       --success: #16a34a;
       --danger: #dc2626;
+      --font-size-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --font-size-sm: clamp(0.875rem, 0.8375rem + 0.1875vw, 1rem);
+      --font-size-lg: clamp(1.125rem, 1.0625rem + 0.3125vw, 1.375rem);
+      --font-size-xl: clamp(1.25rem, 1.175rem + 0.375vw, 1.5625rem);
+      --font-size-2xl: clamp(1.5rem, 1.4rem + 0.5vw, 2rem);
+      --font-size-3xl: clamp(1.875rem, 1.725rem + 0.75vw, 2.5rem);
+      --font-size-4xl: clamp(2.25rem, 2.05rem + 1vw, 3rem);
+      --spacing: clamp(0.5rem, 0.4rem + 0.5vw, 1rem);
+      --spacing-lg: clamp(1rem, 0.8rem + 1vw, 2rem);
+      --radius: 12px;
+      --transition: all 0.2s ease;
     }
-    html.high-contrast{
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #222;
+        --fg: #f0f0f0;
+        --muted: #a0aec0;
+        --card: #333;
+        --border: #444;
+      }
+    }
+
+    html.high-contrast {
       --bg: #000;
       --fg: #fff;
       --muted: #e5e7eb;
@@ -27,72 +50,460 @@
       --focus: #22d3ee;
     }
 
-    html{scroll-behavior:smooth}
-    body{margin:0;background:var(--bg);color:var(--fg);font:400 18px/1.7 "Heebo","Rubik","Segoe UI","Arial",system-ui,sans-serif}
-    a{color:var(--accent);text-decoration:none}
-    a:focus,button:focus,[tabindex]:focus{outline:3px solid var(--focus);outline-offset:3px}
-    .wrap{max-width:1100px;margin-inline:auto;padding:clamp(12px,2vw,24px)}
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
 
-    /* כפתורי נגישות קבועים */
-    .a11y-toolbar{position:fixed;inset-inline-start:12px;bottom:12px;display:flex;flex-direction:column;gap:8px;z-index:20}
-    .a11y-toolbar button{border:1px solid var(--border);background:var(--card);color:var(--fg);padding:8px 10px;border-radius:12px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-    .a11y-toolbar button:hover{transform:translateY(-1px)}
+    html {
+      font-size: var(--font-size-base);
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
 
-    header{position:sticky;top:0;background:var(--bg);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--border);z-index:10}
-    .topnav{display:flex;align-items:center;gap:16px;justify-content:space-between}
-    .brand{display:flex;align-items:center;gap:10px}
-    .logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#9333ea,#2563eb);display:grid;place-items:center;color:#fff;font-weight:700}
-    nav ul{display:flex;gap:10px;flex-wrap:wrap;margin:0;padding:0;list-style:none}
-    nav a{display:block;padding:10px 14px;border-radius:12px}
-    nav a:hover{background:var(--card)}
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: "Heebo", "Rubik", "Segoe UI", "Arial", system-ui, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-    .hero{background:linear-gradient(180deg, var(--card), transparent);border-bottom:1px solid var(--border)}
-    .hero h1{font-size:clamp(28px,4vw,42px);margin:10px 0 6px}
-    .hero p{color:var(--muted);margin:0}
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: var(--transition);
+    }
 
-    section{padding-block:28px;border-bottom:1px solid var(--border)}
-    h2{font-size:clamp(22px,3vw,32px);margin:0 0 10px}
-    h3{font-size:clamp(18px,2.2vw,22px);margin:16px 0 8px}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px}
-    .grid{display:grid;gap:14px}
-    @media (min-width:760px){.grid-2{grid-template-columns:1fr 1fr}}
+    a:hover {
+      text-decoration: underline;
+    }
 
-    .domains{display:flex;flex-wrap:wrap;gap:8px}
-    .chip{border:1px solid var(--border);background:var(--bg);padding:6px 10px;border-radius:999px}
+    a:focus-visible,
+    button:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 3px;
+    }
 
-    footer{padding:28px 0;color:var(--muted)}
+    .wrap {
+      max-width: min(1100px, 95%);
+      margin-inline: auto;
+      padding: var(--spacing);
+    }
 
-    /* מצב מיקוד ברור מאד */
-    :focus-visible{box-shadow:0 0 0 3px var(--focus)}
+    /* Accessibility toolbar */
+    .a11y-toolbar {
+      position: fixed;
+      inset-inline-start: var(--spacing);
+      bottom: var(--spacing);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 1000;
+    }
 
-    /* דילוג לתוכן */
-    .skip-link{position:absolute;inset-inline-start:12px;top:-60px;background:#111827;color:#fff;padding:10px 14px;border-radius:12px;z-index:50}
-    .skip-link:focus{top:12px}
+    .a11y-toolbar button {
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--fg);
+      padding: 10px 12px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      font-size: var(--font-size-lg);
+      min-width: 44px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-    /* קישורי עוגן */
-    .anchor{position:relative}
-    .anchor a.hash{position:absolute;inset-inline-end:-.6em;top:0;opacity:.3}
+    .a11y-toolbar button:hover {
+      transform: translateY(-2px);
+    }
 
-    /* טופס יצירת קשר */
-    form{display:grid;gap:12px}
-    label{font-weight:600}
-    input,textarea{padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--fg)}
-    textarea{min-height:110px}
-    .actions{display:flex;gap:10px;flex-wrap:wrap}
-    .btn{background:var(--accent);color:#fff;border:none;border-radius:12px;padding:10px 16px;cursor:pointer}
-    .btn.secondary{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      background: color-mix(in srgb, var(--bg) 90%, transparent);
+      backdrop-filter: saturate(180%) blur(8px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
 
-    /* אזור מתורגם */
-    #google_translate_element{display:inline-block;border:1px solid var(--border);padding:6px 10px;border-radius:10px;background:var(--bg)}
+    .topnav {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing);
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
 
-    /* הדגשת קישורים בלוח מקשים */
-    a, button { transition: transform .05s ease }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #9333ea, #2563eb);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    nav ul {
+      display: flex;
+      gap: var(--spacing);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      display: block;
+      padding: 10px 14px;
+      border-radius: var(--radius);
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+    }
+
+    nav a:hover {
+      background: var(--card);
+    }
+
+    /* Hero section */
+    .hero {
+      background: linear-gradient(180deg, var(--card), transparent);
+      border-bottom: 1px solid var(--border);
+      padding: var(--spacing-lg) 0;
+    }
+
+    .hero h1 {
+      font-size: var(--font-size-4xl);
+      margin: 10px 0 6px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      color: var(--muted);
+      margin: 0;
+      font-size: var(--font-size-lg);
+    }
+
+    /* Sections */
+    section {
+      padding-block: var(--spacing-lg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    h2 {
+      font-size: var(--font-size-3xl);
+      margin: 0 0 10px;
+      line-height: 1.3;
+    }
+
+    h3 {
+      font-size: var(--font-size-xl);
+      margin: 16px 0 8px;
+      line-height: 1.4;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: var(--spacing-lg);
+    }
+
+    .grid {
+      display: grid;
+      gap: var(--spacing-lg);
+    }
+
+    @media (min-width: 768px) {
+      .grid-2 {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .domains {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      border: 1px solid var(--border);
+      background: var(--bg);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: var(--font-size-sm);
+    }
+
+    /* Footer */
+    footer {
+      padding: var(--spacing-lg) 0;
+      color: var(--muted);
+      margin-top: auto;
+    }
+
+    /* Skip link */
+    .skip-link {
+      position: absolute;
+      inset-inline-start: var(--spacing);
+      top: -60px;
+      background: var(--accent);
+      color: #fff;
+      padding: 12px 16px;
+      border-radius: var(--radius);
+      z-index: 1001;
+      font-weight: 700;
+    }
+
+    .skip-link:focus {
+      top: var(--spacing);
+    }
+
+    /* Anchor links */
+    .anchor {
+      position: relative;
+    }
+
+    .anchor a.hash {
+      position: absolute;
+      inset-inline-end: -1.2em;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0.5;
+      font-size: var(--font-size-lg);
+      transition: var(--transition);
+    }
+
+    .anchor a.hash:hover {
+      opacity: 1;
+    }
+
+    /* Form styles */
+    form {
+      display: grid;
+      gap: var(--spacing);
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    input,
+    textarea,
+    select {
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg);
+      color: var(--fg);
+      font-family: inherit;
+      font-size: inherit;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      gap: var(--spacing);
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      padding: 12px 20px;
+      cursor: pointer;
+      font-size: inherit;
+      font-weight: 600;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .btn:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--accent);
+      border: 2px solid var(--accent);
+    }
+
+    /* Google Translate */
+    #google_translate_element {
+      display: inline-block;
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      border-radius: var(--radius);
+      background: var(--bg);
+      min-height: 44px;
+    }
+
+    /* Lists */
+    ul, ol {
+      padding-inline-start: 1.5em;
+      margin-bottom: 1em;
+    }
+
+    li {
+      margin-bottom: 0.5em;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .topnav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      nav ul {
+        flex-direction: column;
+        width: 100%;
+      }
+      
+      nav a {
+        width: 100%;
+      }
+      
+      .a11y-toolbar {
+        flex-direction: row;
+        inset-inline-start: 50%;
+        transform: translateX(50%);
+        bottom: var(--spacing);
+      }
+      
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+      
+      .hero h1 {
+        font-size: var(--font-size-3xl);
+      }
+    }
+
+    @media (max-width: 480px) {
+      :root {
+        --font-size-base: clamp(0.9rem, 0.9rem + 0.25vw, 1rem);
+      }
+      
+      .actions {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+      }
+    }
+
+    /* Print styles */
+    @media print {
+      .a11y-toolbar,
+      #google_translate_element,
+      .skip-link,
+      form {
+        display: none !important;
+      }
+      
+      body {
+        font-size: 12pt;
+        line-height: 1.5;
+        color: #000;
+        background: #fff;
+      }
+      
+      a {
+        color: #000;
+        text-decoration: underline;
+      }
+      
+      .card {
+        border: 1px solid #000;
+        background: #fff;
+      }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition: none !important;
+        animation: none !important;
+      }
+      
+      .a11y-toolbar button:hover,
+      .btn:hover {
+        transform: none !important;
+      }
+    }
+
+    /* Focus visible polyfill */
+    .js-focus-visible :focus:not(.focus-visible) {
+      outline: none;
+    }
+
+    /* High contrast improvements */
+    html.high-contrast {
+      --bg: #000;
+      --fg: #fff;
+      --card: #111;
+      --border: #fff;
+      
+      scrollbar-color: #fff #000;
+    }
+    
+    html.high-contrast ::-webkit-scrollbar {
+      width: 14px;
+    }
+    
+    html.high-contrast ::-webkit-scrollbar-thumb {
+      background: #fff;
+      border: 3px solid #000;
+      border-radius: 7px;
+    }
+    
+    html.high-contrast ::-webkit-scrollbar-track {
+      background: #000;
+    }
   </style>
 </head>
-<body>
+<body class="js-focus-visible">
   <a class="skip-link" href="#main">דלג/י לתוכן</a>
 
-  <!-- סרגל נגישות בסיסי -->
+  <!-- Accessibility toolbar -->
   <div class="a11y-toolbar" role="region" aria-label="כלי נגישות">
     <button type="button" id="incFont" aria-label="הגדלת גופן">A+</button>
     <button type="button" id="decFont" aria-label="הקטנת גופן">A−</button>
@@ -123,9 +534,9 @@
       <p>עמוד מאוחד עבור <strong>www.ristar.co</strong> ותתי-הדומיינים: results.ristar.co, registration.ristar.co, law.ristar.co.</p>
     </section>
 
-    <!-- הצהרת נגישות -->
+    <!-- Accessibility statement -->
     <section id="access" class="grid">
-      <div class="anchor"><h2>הצהרת נגישות</h2></div>
+      <div class="anchor"><h2>הצהרת נגישות</h2><a href="#access" class="hash" aria-hidden="true">#</a></div>
       <div class="card grid grid-2">
         <div>
           <h3>המסגרת המשפטית והמחויבות</h3>
@@ -164,9 +575,9 @@
       </div>
     </section>
 
-    <!-- תנאי שימוש -->
+    <!-- Terms of use -->
     <section id="terms" class="grid">
-      <div class="anchor"><h2>תנאי שימוש</h2></div>
+      <div class="anchor"><h2>תנאי שימוש</h2><a href="#terms" class="hash" aria-hidden="true">#</a></div>
       <div class="card">
         <h3>כללי</h3>
         <p>
@@ -203,9 +614,9 @@
       </div>
     </section>
 
-    <!-- מדיניות פרטיות -->
+    <!-- Privacy policy -->
     <section id="privacy" class="grid">
-      <div class="anchor"><h2>מדיניות פרטיות</h2></div>
+      <div class="anchor"><h2>מדיניות פרטיות</h2><a href="#privacy" class="hash" aria-hidden="true">#</a></div>
       <div class="card grid grid-2">
         <div>
           <h3>אילו נתונים נאספים</h3>
@@ -234,19 +645,19 @@
       </div>
     </section>
 
-    <!-- יצירת קשר -->
+    <!-- Contact form -->
     <section id="contact" class="grid">
-      <div class="anchor"><h2>יצירת קשר</h2></div>
+      <div class="anchor"><h2>יצירת קשר</h2><a href="#contact" class="hash" aria-hidden="true">#</a></div>
       <div class="card">
         <form aria-describedby="contactHelp" onsubmit="event.preventDefault(); contactAck();">
-          <p id="contactHelp" class="muted">נשמח לסייע בכל נושא משפטי/נגישות. ניתן גם לפנות ישירות בטלפון או במייל.</p>
+          <p id="contactHelp" style="color: var(--muted);">נשמח לסייע בכל נושא משפטי/נגישות. ניתן גם לפנות ישירות בטלפון או במייל.</p>
           <div>
             <label for="name">שם מלא</label>
-            <input id="name" name="name" type="text" autocomplete="name" required />
+            <input id="name" name="name" type="text" autocomplete="name" required>
           </div>
           <div>
             <label for="email">דוא"ל</label>
-            <input id="email" name="email" type="email" autocomplete="email" required />
+            <input id="email" name="email" type="email" autocomplete="email" required>
           </div>
           <div>
             <label for="message">פנייה</label>
@@ -257,7 +668,7 @@
             <a class="btn secondary" href="mailto:2mmedia.il@gmail.com?subject=%D7%A4%D7%A0%D7%99%D7%99%D7%94%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8">שליחה בדוא"ל</a>
             <a class="btn secondary" href="tel:+972547798676">התקשרות</a>
           </div>
-          <div aria-live="polite" id="ack" style="margin-top:8px"></div>
+          <div aria-live="polite" id="ack" style="margin-top: var(--spacing);"></div>
         </form>
       </div>
     </section>
@@ -270,7 +681,7 @@
     </footer>
   </main>
 
-  <!-- Google Translate: מחולל תרגום אוטומטי של גוגל -->
+  <!-- Google Translate -->
   <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({pageLanguage: 'he', includedLanguages: 'en,ru,uk,ar,fr,es,de', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
@@ -279,35 +690,50 @@
   <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
   <script>
-    // שנה נוכחית בפוטר
+    // Current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // התאמות נגישות: גודל גופן וניגודיות גבוהה
+    // Accessibility adjustments: font size and high contrast
     const htmlEl = document.documentElement;
-    let fontScale = 1; // בסיס
+    let fontScale = 1;
     const minScale = 0.85;
     const maxScale = 1.4;
 
     document.getElementById('incFont').addEventListener('click', () => {
       fontScale = Math.min(maxScale, +(fontScale + 0.05).toFixed(2));
-      htmlEl.style.fontSize = fontScale + 'em';
-      announce(`גודל גופן ${Math.round(fontScale*100)}%`);
+      htmlEl.style.fontSize = `calc(${getComputedStyle(htmlEl).fontSize} * ${fontScale})`;
+      announce(`גודל גופן ${Math.round(fontScale * 100)}%`);
     });
+
     document.getElementById('decFont').addEventListener('click', () => {
       fontScale = Math.max(minScale, +(fontScale - 0.05).toFixed(2));
-      htmlEl.style.fontSize = fontScale + 'em';
-      announce(`גודל גופן ${Math.round(fontScale*100)}%`);
+      htmlEl.style.fontSize = `calc(${getComputedStyle(htmlEl).fontSize} * ${fontScale})`;
+      announce(`גודל גופן ${Math.round(fontScale * 100)}%`);
     });
+
     const contrastBtn = document.getElementById('contrast');
     contrastBtn.addEventListener('click', () => {
       const on = htmlEl.classList.toggle('high-contrast');
       contrastBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
       announce(on ? 'מצב ניגודיות גבוהה הופעל' : 'מצב ניגודיות גבוהה בוטל');
+      
+      // Save preference to localStorage
+      if (on) {
+        localStorage.setItem('highContrast', 'true');
+      } else {
+        localStorage.removeItem('highContrast');
+      }
     });
 
-    // ARIA live להודעות קצרות
+    // Check for saved high contrast preference
+    if (localStorage.getItem('highContrast') === 'true') {
+      htmlEl.classList.add('high-contrast');
+      contrastBtn.setAttribute('aria-pressed', 'true');
+    }
+
+    // ARIA live region for announcements
     const live = document.createElement('div');
-    live.setAttribute('aria-live','polite');
+    live.setAttribute('aria-live', 'polite');
     live.className = 'sr-only';
     live.style.position = 'absolute';
     live.style.width = '1px';
@@ -315,14 +741,23 @@
     live.style.overflow = 'hidden';
     live.style.clip = 'rect(1px, 1px, 1px, 1px)';
     document.body.appendChild(live);
-    function announce(msg){ live.textContent = ''; setTimeout(()=> live.textContent = msg, 50); }
+    
+    function announce(msg) { 
+      live.textContent = ''; 
+      setTimeout(() => live.textContent = msg, 50); 
+    }
 
-    function contactAck(){
+    function contactAck() {
       const ack = document.getElementById('ack');
       ack.textContent = 'ההודעה נשלחה (הדגמה). ניצור קשר בקרוב.';
       ack.style.color = 'var(--success)';
       announce('הטופס נשלח בהצלחה');
     }
+
+    // Add focus-visible class for keyboard navigation
+    document.addEventListener('DOMContentLoaded', function() {
+      document.body.classList.add('js-focus-visible');
+    });
   </script>
 </body>
 </html>
