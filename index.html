@@ -30,16 +30,6 @@
       --transition: all 0.2s ease;
     }
 
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #222;
-        --fg: #f0f0f0;
-        --muted: #a0aec0;
-        --card: #333;
-        --border: #444;
-      }
-    }
-
     html.high-contrast {
       --bg: #000;
       --fg: #fff;
@@ -135,10 +125,11 @@
     header {
       position: sticky;
       top: 0;
-      background: color-mix(in srgb, var(--bg) 90%, transparent);
+      background: #ffffff;
       backdrop-filter: saturate(180%) blur(8px);
       border-bottom: 1px solid var(--border);
       z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     }
 
     .topnav {
@@ -288,6 +279,8 @@
       padding: var(--spacing-lg) 0;
       color: var(--muted);
       margin-top: auto;
+      background: #f8f9fa;
+      border-top: 1px solid var(--border);
     }
 
     /* Skip link */
