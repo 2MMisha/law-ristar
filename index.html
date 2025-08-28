@@ -824,51 +824,7 @@
     </div>
   </header>
 
-    <!-- Accessibility Widget -->
-  <div id="accessibility-widget-container">
-    <div class="accessibility-toggle" id="accessibilityToggle" role="button" aria-label="הגדרות נגישות" tabindex="0">
-      <span class="access-symbol">♿</span>
-    </div>
-  </div>
 
-  <div class="accessibility-overlay" id="accessibilityOverlay"></div>
-
-  <div class="accessibility-panel" id="accessibilityPanel" aria-hidden="true">
-    <div class="panel-header">
-      <h2 class="panel-title" id="panelTitle">הגדרות נגישות</h2>
-      <button class="close-btn" id="closePanel" aria-label="סגור">×</button>
-    </div>
-
-    <div class="panel-section">
-      <h3 class="section-title" id="textSizeTitle">גודל טקסט</h3>
-      <button class="access-btn" data-action="font-size" data-value="1" id="textIncrease">הגדל טקסט (+)</button>
-      <button class="access-btn" data-action="font-size" data-value="0" id="textNormal">גודל רגיל</button>
-      <button class="access-btn" data-action="font-size" data-value="-1" id="textDecrease">הקטן טקסט (-)</button>
-    </div>
-
-    <div class="panel-section">
-      <h3 class="section-title" id="contrastTitle">צבע וניגודיות</h3>
-      <button class="access-btn" data-action="contrast" data-value="dark" id="contrastDark">ניגודיות כהה</button>
-      <button class="access-btn" data-action="contrast" data-value="light" id="contrastLight">ניגודיות בהירה</button>
-      <button class="access-btn" data-action="contrast" data-value="monochrome" id="contrastMono">מונוכרום</button>
-      <button class="access-btn" data-action="contrast" data-value="reset" id="contrastReset">איפוס צבעים</button>
-    </div>
-
-    <div class="panel-section">
-      <h3 class="section-title" id="readingTitle">קריאה</h3>
-      <button class="access-btn" data-action="dyslexia-font" data-font="dyslex-kriyah" id="dyslexiaFontDyslex">Dyslex-Kriyah</button>
-      <button class="access-btn" data-action="dyslexia-font" data-font="comicsans" id="dyslexiaFontComic">Comic Sans</button>
-      <button class="access-btn" data-action="dyslexia-font" data-font="normal" id="dyslexiaFontNormal">גופן רגיל</button>
-      <button class="access-btn" data-action="highlight-links" id="highlightLinks">הדגש קישורים</button>
-      <button class="access-btn" data-action="big-cursor" id="bigCursor">סמן גדול</button>
-    </div>
-
-    <div class="panel-section">
-      <button class="access-btn" data-action="reset" id="resetAll" style="background: #ff4444; color: white;">
-        אפס כל ההגדרות
-      </button>
-    </div>
-  </div>
   <main id="main" class="wrap" tabindex="-1">
     <section class="hero" aria-labelledby="title">
       <h1 id="title">הצהרת נגישות · תנאי שימוש · מדיניות פרטיות</h1>
@@ -1396,5 +1352,50 @@
       });
     })();
   </script>
+      <!-- Accessibility Widget -->
+  <div id="accessibility-widget-container">
+    <div class="accessibility-toggle" id="accessibilityToggle" role="button" aria-label="הגדרות נגישות" tabindex="0">
+      <span class="access-symbol">♿</span>
+    </div>
+  </div>
+
+  <div class="accessibility-overlay" id="accessibilityOverlay"></div>
+
+  <div class="accessibility-panel" id="accessibilityPanel" aria-hidden="true">
+    <div class="panel-header">
+      <h2 class="panel-title" id="panelTitle">הגדרות נגישות</h2>
+      <button class="close-btn" id="closePanel" aria-label="סגור">×</button>
+    </div>
+
+    <div class="panel-section">
+      <h3 class="section-title" id="textSizeTitle">גודל טקסט</h3>
+      <button class="access-btn" data-action="font-size" data-value="1" id="textIncrease">הגדל טקסט (+)</button>
+      <button class="access-btn" data-action="font-size" data-value="0" id="textNormal">גודל רגיל</button>
+      <button class="access-btn" data-action="font-size" data-value="-1" id="textDecrease">הקטן טקסט (-)</button>
+    </div>
+
+    <div class="panel-section">
+      <h3 class="section-title" id="contrastTitle">צבע וניגודיות</h3>
+      <button class="access-btn" data-action="contrast" data-value="dark" id="contrastDark">ניגודיות כהה</button>
+      <button class="access-btn" data-action="contrast" data-value="light" id="contrastLight">ניגודיות בהירה</button>
+      <button class="access-btn" data-action="contrast" data-value="monochrome" id="contrastMono">מונוכרום</button>
+      <button class="access-btn" data-action="contrast" data-value="reset" id="contrastReset">איפוס צבעים</button>
+    </div>
+
+    <div class="panel-section">
+      <h3 class="section-title" id="readingTitle">קריאה</h3>
+      <button class="access-btn" data-action="dyslexia-font" data-font="dyslex-kriyah" id="dyslexiaFontDyslex">Dyslex-Kriyah</button>
+      <button class="access-btn" data-action="dyslexia-font" data-font="comicsans" id="dyslexiaFontComic">Comic Sans</button>
+      <button class="access-btn" data-action="dyslexia-font" data-font="normal" id="dyslexiaFontNormal">גופן רגיל</button>
+      <button class="access-btn" data-action="highlight-links" id="highlightLinks">הדגש קישורים</button>
+      <button class="access-btn" data-action="big-cursor" id="bigCursor">סמן גדול</button>
+    </div>
+
+    <div class="panel-section">
+      <button class="access-btn" data-action="reset" id="resetAll" style="background: #ff4444; color: white;">
+        אפס כל ההגדרות
+      </button>
+    </div>
+  </div>
 </body>
 </html>
