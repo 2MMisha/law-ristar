@@ -467,6 +467,307 @@
     html.high-contrast ::-webkit-scrollbar-track {
       background: #000;
     }
+    
+    /* Collapsible menu styles */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 10px;
+      border-radius: var(--radius);
+      min-height: 44px;
+      min-width: 44px;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .menu-toggle:hover {
+      background: var(--card);
+    }
+    
+    .nav-container {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing);
+    }
+    
+    @media (max-width: 900px) {
+      .menu-toggle {
+        display: flex;
+      }
+      
+      nav {
+        position: fixed;
+        top: 70px;
+        right: 0;
+        background: var(--bg);
+        width: 280px;
+        height: calc(100vh - 70px);
+        border-left: 1px solid var(--border);
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        z-index: 99;
+        padding: var(--spacing);
+        overflow-y: auto;
+      }
+      
+      nav.active {
+        transform: translateX(0);
+      }
+      
+      nav ul {
+        flex-direction: column;
+      }
+      
+      .accessibility-toggle {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        z-index: 1000;
+      }
+    }
+    
+    /* Accessibility Widget Styles */
+    .accessibility-widget-container {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 100000;
+      font-family: Arial, sans-serif;
+    }
+
+    .accessibility-toggle {
+      width: 60px;
+      height: 60px;
+      background: #0056b3;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      border: 2px solid #fff;
+    }
+
+    .accessibility-toggle:hover {
+      background: #003d82;
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .accessibility-toggle:active {
+      transform: scale(0.95);
+    }
+
+    .access-symbol {
+      font-size: 28px;
+      color: white;
+      filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.3));
+    }
+
+    .accessibility-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 99999;
+      display: none;
+    }
+
+    .accessibility-panel {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      border: 2px solid #333;
+      padding: 25px;
+      z-index: 100001;
+      border-radius: 12px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+      max-width: 350px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      display: none;
+    }
+
+    .accessibility-panel[aria-hidden="false"] {
+      display: block;
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #eee;
+    }
+
+    .panel-title {
+      margin: 0;
+      font-size: 1.5em;
+      color: #333;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: #666;
+      padding: 5px;
+      line-height: 1;
+    }
+
+    .close-btn:hover {
+      color: #000;
+    }
+
+    .panel-section {
+      margin-bottom: 25px;
+    }
+
+    .section-title {
+      margin: 0 0 12px 0;
+      font-size: 1.2em;
+      color: #444;
+      font-weight: 600;
+    }
+
+    .access-btn {
+      display: block;
+      width: 100%;
+      padding: 12px 15px;
+      margin: 8px 0;
+      background: #f8f9fa;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+
+    .access-btn:hover {
+      background: #e9ecef;
+      border-color: #0056b3;
+    }
+
+    /* Font loading with multiple fallbacks */
+    @font-face {
+      font-family: 'DyslexicFont';
+      src: url('dyslexia-hebrew-extended.otf') format('opentype'),
+           url('./dyslexia-hebrew-extended.otf') format('opentype'),
+           url('/dyslexia-hebrew-extended.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* Accessibility Styles */
+    .accessibility-dyslexic {
+      font-family: 'DyslexicFont', 'Comic Sans MS', 'Arial Rounded MT Bold', Arial, sans-serif !important;
+      letter-spacing: 0.05em !important;
+      line-height: 1.8 !important;
+      font-size: 1.1em !important;
+    }
+
+    .accessibility-comicsans {
+      font-family: 'Comic Sans MS', 'Comic Sans', cursive, Arial, sans-serif !important;
+      letter-spacing: 0.03em !important;
+      line-height: 1.7 !important;
+    }
+
+    .accessibility-normal-font {
+      font-family: inherit !important;
+      letter-spacing: normal !important;
+      line-height: normal !important;
+      font-size: inherit !important;
+    }
+
+    .access-btn.active-font {
+      background: #0056b3 !important;
+      color: white !important;
+      border-color: #003d82 !important;
+    }
+
+    .accessibility-highlight-links a {
+      text-decoration: underline !important;
+      background-color: yellow !important;
+      color: #000 !important;
+      padding: 2px 4px !important;
+    }
+
+    .accessibility-contrast-dark {
+      background-color: #000 !important;
+      color: #fff !important;
+    }
+
+    .accessibility-contrast-dark *:not(.accessibility-panel):not(.accessibility-panel *) {
+      background-color: #000 !important;
+      color: #fff !important;
+      border-color: #fff !important;
+    }
+
+    .accessibility-contrast-light {
+      background-color: #fff !important;
+      color: #000 !important;
+    }
+
+    .accessibility-contrast-light *:not(.accessibility-panel):not(.accessibility-panel *) {
+      background-color: #fff !important;
+      color: #000 !important;
+      border-color: #000 !important;
+    }
+
+    .accessibility-monochrome {
+      filter: grayscale(100%) !important;
+    }
+
+    .accessibility-big-cursor {
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='10' fill='%23000000'/%3E%3C/svg%3E") 12 12, auto !important;
+    }
+
+    .accessibility-big-cursor * {
+      cursor: inherit !important;
+    }
+
+    /* RTL support */
+    [dir="rtl"] .accessibility-widget-container {
+      right: auto;
+      left: 20px;
+    }
+
+    [dir="rtl"] .accessibility-panel {
+      text-align: right;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .accessibility-toggle {
+        width: 50px;
+        height: 50px;
+        bottom: 15px;
+        right: 15px;
+      }
+      
+      .accessibility-panel {
+        width: 95%;
+        padding: 20px 15px;
+      }
+      
+      [dir="rtl"] .accessibility-toggle {
+        right: auto;
+        left: 15px;
+      }
+    }
   </style>
 </head>
 <body class="js-focus-visible">
@@ -478,22 +779,20 @@
         <div class="logo" aria-hidden="true">RS</div>
         <strong>ristar.co · עמוד משפטי</strong>
       </div>
-      <nav>
-        <ul>
-          <li><a href="#access">הצהרת נגישות</a></li>
-          <li><a href="#terms">תנאי שימוש</a></li>
-          <li><a href="#privacy">מדיניות פרטיות</a></li>
-          <li><a href="#contact">יצירת קשר</a></li>
-          <li><!-- Accessibility Widget - Place before </body> -->
-<div id="accessibility-widget-container">
-    <div class="accessibility-toggle" id="accessibilityToggle" role="button" aria-label="Accessibility Settings" tabindex="0">
-        <span class="access-symbol">♿</span>
-    </div>
-</div>
-</li>
-        </ul>
-      </nav>
-      <span id="google_translate_element" aria-label="בחירת שפה"></span>
+      <div class="nav-container">
+        <button class="menu-toggle" id="menuToggle" aria-label="הצג/הסתר תפריט">
+          <span aria-hidden="true">☰</span>
+        </button>
+        <nav id="mainNav">
+          <ul>
+            <li><a href="#access">הצהרת נגישות</a></li>
+            <li><a href="#terms">תנאי שימוש</a></li>
+            <li><a href="#privacy">מדיניות פרטיות</a></li>
+            <li><a href="#contact">יצירת קשר</a></li>
+          </ul>
+        </nav>
+        <span id="google_translate_element" aria-label="בחירת שפה"></span>
+      </div>
     </div>
   </header>
 
@@ -650,6 +949,52 @@
     </footer>
   </main>
 
+  <!-- Accessibility Widget -->
+  <div class="accessibility-widget-container">
+    <div class="accessibility-toggle" id="accessibilityToggle" role="button" aria-label="Accessibility Settings" tabindex="0">
+        <span class="access-symbol">♿</span>
+    </div>
+  </div>
+
+  <div class="accessibility-overlay" id="accessibilityOverlay"></div>
+
+  <div class="accessibility-panel" id="accessibilityPanel" aria-hidden="true">
+      <div class="panel-header">
+          <h2 class="panel-title" id="panelTitle">Accessibility Settings</h2>
+          <button class="close-btn" id="closePanel" aria-label="Close">×</button>
+      </div>
+
+      <div class="panel-section">
+          <h3 class="section-title" id="textSizeTitle">Text Size</h3>
+          <button class="access-btn" data-action="font-size" data-value="1" id="textIncrease">Increase Text (+)</button>
+          <button class="access-btn" data-action="font-size" data-value="0" id="textNormal">Normal Text</button>
+          <button class="access-btn" data-action="font-size" data-value="-1" id="textDecrease">Decrease Text (-)</button>
+      </div>
+
+      <div class="panel-section">
+          <h3 class="section-title" id="contrastTitle">Color & Contrast</h3>
+          <button class="access-btn" data-action="contrast" data-value="dark" id="contrastDark">Dark Contrast</button>
+          <button class="access-btn" data-action="contrast" data-value="light" id="contrastLight">Light Contrast</button>
+          <button class="access-btn" data-action="contrast" data-value="monochrome" id="contrastMono">Monochrome</button>
+          <button class="access-btn" data-action="contrast" data-value="reset" id="contrastReset">Reset Colors</button>
+      </div>
+
+      <div class="panel-section">
+          <h3 class="section-title" id="readingTitle">Reading</h3>
+          <button class="access-btn" data-action="dyslexia-font" data-font="dyslexic" id="dyslexiaFontDyslexic">Dyslexic Font</button>
+          <button class="access-btn" data-action="dyslexia-font" data-font="comicsans" id="dyslexiaFontComic">Comic Sans Font</button>
+          <button class="access-btn" data-action="dyslexia-font" data-font="normal" id="dyslexiaFontNormal">Normal Font</button>
+          <button class="access-btn" data-action="highlight-links" id="highlightLinks">Highlight Links</button>
+          <button class="access-btn" data-action="big-cursor" id="bigCursor">Big Cursor</button>
+      </div>
+
+      <div class="panel-section">
+          <button class="access-btn" data-action="reset" id="resetAll" style="background: #ff4444; color: white;">
+              Reset All Settings
+          </button>
+      </div>
+  </div>
+
   <!-- Google Translate -->
   <script type="text/javascript">
     function googleTranslateElementInit() {
@@ -661,6 +1006,37 @@
   <script>
     // Current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Menu toggle functionality
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('mainNav');
+    
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener('click', () => {
+        mainNav.classList.toggle('active');
+        const isExpanded = mainNav.classList.contains('active');
+        menuToggle.setAttribute('aria-expanded', isExpanded);
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (mainNav.classList.contains('active') && 
+            !mainNav.contains(e.target) && 
+            !menuToggle.contains(e.target)) {
+          mainNav.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+      
+      // Close menu on escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mainNav.classList.contains('active')) {
+          mainNav.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+          menuToggle.focus();
+        }
+      });
+    }
 
     // Accessibility adjustments: font size and high contrast
     const htmlEl = document.documentElement;
@@ -727,297 +1103,13 @@
     document.addEventListener('DOMContentLoaded', function() {
       document.body.classList.add('js-focus-visible');
     });
-  </script>
-
-
-<div class="accessibility-overlay" id="accessibilityOverlay"></div>
-
-<div class="accessibility-panel" id="accessibilityPanel" aria-hidden="true">
-    <div class="panel-header">
-        <h2 class="panel-title" id="panelTitle">Accessibility Settings</h2>
-        <button class="close-btn" id="closePanel" aria-label="Close">×</button>
-    </div>
-
-    <div class="panel-section">
-        <h3 class="section-title" id="textSizeTitle">Text Size</h3>
-        <button class="access-btn" data-action="font-size" data-value="1" id="textIncrease">Increase Text (+)</button>
-        <button class="access-btn" data-action="font-size" data-value="0" id="textNormal">Normal Text</button>
-        <button class="access-btn" data-action="font-size" data-value="-1" id="textDecrease">Decrease Text (-)</button>
-    </div>
-
-    <div class="panel-section">
-        <h3 class="section-title" id="contrastTitle">Color & Contrast</h3>
-        <button class="access-btn" data-action="contrast" data-value="dark" id="contrastDark">Dark Contrast</button>
-        <button class="access-btn" data-action="contrast" data-value="light" id="contrastLight">Light Contrast</button>
-        <button class="access-btn" data-action="contrast" data-value="monochrome" id="contrastMono">Monochrome</button>
-        <button class="access-btn" data-action="contrast" data-value="reset" id="contrastReset">Reset Colors</button>
-    </div>
-
-    <div class="panel-section">
-        <h3 class="section-title" id="readingTitle">Reading</h3>
-        <button class="access-btn" data-action="dyslexia-font" data-font="dyslexic" id="dyslexiaFontDyslexic">Dyslexic Font</button>
-        <button class="access-btn" data-action="dyslexia-font" data-font="comicsans" id="dyslexiaFontComic">Comic Sans Font</button>
-        <button class="access-btn" data-action="dyslexia-font" data-font="normal" id="dyslexiaFontNormal">Normal Font</button>
-        <button class="access-btn" data-action="highlight-links" id="highlightLinks">Highlight Links</button>
-        <button class="access-btn" data-action="big-cursor" id="bigCursor">Big Cursor</button>
-    </div>
-
-    <div class="panel-section">
-        <button class="access-btn" data-action="reset" id="resetAll" style="background: #ff4444; color: white;">
-            Reset All Settings
-        </button>
-    </div>
-</div>
-
-<style>
-/* Accessibility Widget Styles */
-.accessibility-widget-container {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 100000;
-    font-family: Arial, sans-serif;
-}
-
-.accessibility-toggle {
-    width: 60px;
-    height: 60px;
-    background: #0056b3;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
-    border: 2px solid #fff;
-}
-
-.accessibility-toggle:hover {
-    background: #003d82;
-    transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-}
-
-.accessibility-toggle:active {
-    transform: scale(0.95);
-}
-
-.access-symbol {
-    font-size: 28px;
-    color: white;
-    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.3));
-}
-
-.accessibility-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 99999;
-    display: none;
-}
-
-.accessibility-panel {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    border: 2px solid #333;
-    padding: 25px;
-    z-index: 100001;
-    border-radius: 12px;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
-    max-width: 350px;
-    width: 90%;
-    max-height: 80vh;
-    overflow-y: auto;
-    display: none;
-}
-
-.accessibility-panel[aria-hidden="false"] {
-    display: block;
-}
-
-.panel-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 2px solid #eee;
-}
-
-.panel-title {
-    margin: 0;
-    font-size: 1.5em;
-    color: #333;
-}
-
-.close-btn {
-    background: none;
-    border: none;
-    font-size: 28px;
-    cursor: pointer;
-    color: #666;
-    padding: 5px;
-    line-height: 1;
-}
-
-.close-btn:hover {
-    color: #000;
-}
-
-.panel-section {
-    margin-bottom: 25px;
-}
-
-.section-title {
-    margin: 0 0 12px 0;
-    font-size: 1.2em;
-    color: #444;
-    font-weight: 600;
-}
-
-.access-btn {
-    display: block;
-    width: 100%;
-    padding: 12px 15px;
-    margin: 8px 0;
-    background: #f8f9fa;
-    border: 2px solid #ddd;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: all 0.2s ease;
-    text-align: center;
-}
-
-.access-btn:hover {
-    background: #e9ecef;
-    border-color: #0056b3;
-}
-
-/* Font loading with multiple fallbacks */
-@font-face {
-    font-family: 'DyslexicFont';
-    src: url('dyslexia-hebrew-extended.otf') format('opentype'),
-         url('./dyslexia-hebrew-extended.otf') format('opentype'),
-         url('/dyslexia-hebrew-extended.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-/* Accessibility Styles */
-.accessibility-dyslexic {
-    font-family: 'DyslexicFont', 'Comic Sans MS', 'Arial Rounded MT Bold', Arial, sans-serif !important;
-    letter-spacing: 0.05em !important;
-    line-height: 1.8 !important;
-    font-size: 1.1em !important;
-}
-
-.accessibility-comicsans {
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive, Arial, sans-serif !important;
-    letter-spacing: 0.03em !important;
-    line-height: 1.7 !important;
-}
-
-.accessibility-normal-font {
-    font-family: inherit !important;
-    letter-spacing: normal !important;
-    line-height: normal !important;
-    font-size: inherit !important;
-}
-
-.access-btn.active-font {
-    background: #0056b3 !important;
-    color: white !important;
-    border-color: #003d82 !important;
-}
-
-.accessibility-highlight-links a {
-    text-decoration: underline !important;
-    background-color: yellow !important;
-    color: #000 !important;
-    padding: 2px 4px !important;
-}
-
-.accessibility-contrast-dark {
-    background-color: #000 !important;
-    color: #fff !important;
-}
-
-.accessibility-contrast-dark *:not(.accessibility-panel):not(.accessibility-panel *) {
-    background-color: #000 !important;
-    color: #fff !important;
-    border-color: #fff !important;
-}
-
-.accessibility-contrast-light {
-    background-color: #fff !important;
-    color: #000 !important;
-}
-
-.accessibility-contrast-light *:not(.accessibility-panel):not(.accessibility-panel *) {
-    background-color: #fff !important;
-    color: #000 !important;
-    border-color: #000 !important;
-}
-
-.accessibility-monochrome {
-    filter: grayscale(100%) !important;
-}
-
-.accessibility-big-cursor {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='10' fill='%23000000'/%3E%3C/svg%3E") 12 12, auto !important;
-}
-
-.accessibility-big-cursor * {
-    cursor: inherit !important;
-}
-
-/* RTL support */
-[dir="rtl"] .accessibility-widget-container {
-    right: auto;
-    left: 20px;
-}
-
-[dir="rtl"] .accessibility-panel {
-    text-align: right;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .accessibility-toggle {
-        width: 50px;
-        height: 50px;
-        bottom: 15px;
-        right: 15px;
-    }
     
-    .accessibility-panel {
-        width: 95%;
-        padding: 20px 15px;
-    }
-    
-    [dir="rtl"] .accessibility-toggle {
-        right: auto;
-        left: 15px;
-    }
-}
-</style>
-
-<script>
-// Accessibility Widget JavaScript
-(function() {
-    'use strict';
-    
-    // Language detection and translations
-    const translations = {
+    // Accessibility Widget JavaScript
+    (function() {
+      'use strict';
+      
+      // Language detection and translations
+      const translations = {
         en: {
             panelTitle: "Accessibility Settings",
             textSizeTitle: "Text Size",
@@ -1081,238 +1173,238 @@
             close: "סגור",
             toggleLabel: "הגדרות נגישות"
         }
-    };
+      };
 
-    // Detect language
-    function detectLanguage() {
-        const htmlLang = document.documentElement.lang;
-        const userLang = navigator.language || navigator.userLanguage;
-        
-        if (htmlLang && translations[htmlLang]) {
-            return htmlLang;
-        }
-        
-        const primaryLang = userLang.split('-')[0];
-        if (translations[primaryLang]) {
-            return primaryLang;
-        }
-        
-        return 'en';
-    }
+      // Detect language
+      function detectLanguage() {
+          const htmlLang = document.documentElement.lang;
+          const userLang = navigator.language || navigator.userLanguage;
+          
+          if (htmlLang && translations[htmlLang]) {
+              return htmlLang;
+          }
+          
+          const primaryLang = userLang.split('-')[0];
+          if (translations[primaryLang]) {
+              return primaryLang;
+          }
+          
+          return 'en';
+      }
 
-    // Apply translations
-    function applyTranslations(lang) {
-        const trans = translations[lang];
-        const elements = {
-            'panelTitle': trans.panelTitle,
-            'textSizeTitle': trans.textSizeTitle,
-            'contrastTitle': trans.contrastTitle,
-            'readingTitle': trans.readingTitle,
-            'textIncrease': trans.textIncrease,
-            'textNormal': trans.textNormal,
-            'textDecrease': trans.textDecrease,
-            'contrastDark': trans.contrastDark,
-            'contrastLight': trans.contrastLight,
-            'contrastMono': trans.contrastMono,
-            'contrastReset': trans.contrastReset,
-            'dyslexiaFontDyslexic': trans.dyslexiaFontDyslexic,
-            'dyslexiaFontComic': trans.dyslexiaFontComic,
-            'dyslexiaFontNormal': trans.dyslexiaFontNormal,
-            'highlightLinks': trans.highlightLinks,
-            'bigCursor': trans.bigCursor,
-            'resetAll': trans.resetAll
-        };
+      // Apply translations
+      function applyTranslations(lang) {
+          const trans = translations[lang];
+          const elements = {
+              'panelTitle': trans.panelTitle,
+              'textSizeTitle': trans.textSizeTitle,
+              'contrastTitle': trans.contrastTitle,
+              'readingTitle': trans.readingTitle,
+              'textIncrease': trans.textIncrease,
+              'textNormal': trans.textNormal,
+              'textDecrease': trans.textDecrease,
+              'contrastDark': trans.contrastDark,
+              'contrastLight': trans.contrastLight,
+              'contrastMono': trans.contrastMono,
+              'contrastReset': trans.contrastReset,
+              'dyslexiaFontDyslexic': trans.dyslexiaFontDyslexic,
+              'dyslexiaFontComic': trans.dyslexiaFontComic,
+              'dyslexiaFontNormal': trans.dyslexiaFontNormal,
+              'highlightLinks': trans.highlightLinks,
+              'bigCursor': trans.bigCursor,
+              'resetAll': trans.resetAll
+          };
 
-        for (const [id, text] of Object.entries(elements)) {
-            const element = document.getElementById(id);
-            if (element) element.textContent = text;
-        }
+          for (const [id, text] of Object.entries(elements)) {
+              const element = document.getElementById(id);
+              if (element) element.textContent = text;
+          }
 
-        const closePanel = document.getElementById('closePanel');
-        const accessibilityToggle = document.getElementById('accessibilityToggle');
-        
-        if (closePanel) closePanel.setAttribute('aria-label', trans.close);
-        if (accessibilityToggle) accessibilityToggle.setAttribute('aria-label', trans.toggleLabel);
-        
-        if (lang === 'he') {
-            const panel = document.getElementById('accessibilityPanel');
-            if (panel) panel.setAttribute('dir', 'rtl');
-        }
-    }
+          const closePanel = document.getElementById('closePanel');
+          const accessibilityToggle = document.getElementById('accessibilityToggle');
+          
+          if (closePanel) closePanel.setAttribute('aria-label', trans.close);
+          if (accessibilityToggle) accessibilityToggle.setAttribute('aria-label', trans.toggleLabel);
+          
+          if (lang === 'he') {
+              const panel = document.getElementById('accessibilityPanel');
+              if (panel) panel.setAttribute('dir', 'rtl');
+          }
+      }
 
-    // Main functionality
-    function initAccessibilityWidget() {
-        const currentLang = detectLanguage();
-        applyTranslations(currentLang);
-        
-        const toggleBtn = document.getElementById('accessibilityToggle');
-        const panel = document.getElementById('accessibilityPanel');
-        const closeBtn = document.getElementById('closePanel');
-        const overlay = document.getElementById('accessibilityOverlay');
+      // Main functionality
+      function initAccessibilityWidget() {
+          const currentLang = detectLanguage();
+          applyTranslations(currentLang);
+          
+          const toggleBtn = document.getElementById('accessibilityToggle');
+          const panel = document.getElementById('accessibilityPanel');
+          const closeBtn = document.getElementById('closePanel');
+          const overlay = document.getElementById('accessibilityOverlay');
 
-        if (!toggleBtn || !panel || !closeBtn || !overlay) return;
+          if (!toggleBtn || !panel || !closeBtn || !overlay) return;
 
-        // Toggle panel
-        function togglePanel() {
-            const isHidden = panel.getAttribute('aria-hidden') === 'true';
-            panel.setAttribute('aria-hidden', !isHidden);
-            overlay.style.display = isHidden ? 'block' : 'none';
-            
-            if (isHidden) {
-                panel.focus();
-            }
-        }
+          // Toggle panel
+          function togglePanel() {
+              const isHidden = panel.getAttribute('aria-hidden') === 'true';
+              panel.setAttribute('aria-hidden', !isHidden);
+              overlay.style.display = isHidden ? 'block' : 'none';
+              
+              if (isHidden) {
+                  panel.focus();
+              }
+          }
 
-        // Close panel
-        function closePanel() {
-            panel.setAttribute('aria-hidden', 'true');
-            overlay.style.display = 'none';
-        }
+          // Close panel
+          function closePanel() {
+              panel.setAttribute('aria-hidden', 'true');
+              overlay.style.display = 'none';
+          }
 
-        // Event listeners
-        toggleBtn.addEventListener('click', togglePanel);
-        closeBtn.addEventListener('click', closePanel);
-        overlay.addEventListener('click', closePanel);
+          // Event listeners
+          toggleBtn.addEventListener('click', togglePanel);
+          closeBtn.addEventListener('click', closePanel);
+          overlay.addEventListener('click', closePanel);
 
-        // Keyboard navigation
-        toggleBtn.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                togglePanel();
-            }
-        });
+          // Keyboard navigation
+          toggleBtn.addEventListener('keypress', function(e) {
+              if (e.key === 'Enter' || e.key === ' ') {
+                  togglePanel();
+              }
+          });
 
-        // Handle accessibility actions
-        panel.addEventListener('click', function(e) {
-            if (e.target.tagName === 'BUTTON' && e.target !== closeBtn) {
-                const action = e.target.dataset.action;
-                const value = e.target.dataset.value;
-                const font = e.target.dataset.font;
+          // Handle accessibility actions
+          panel.addEventListener('click', function(e) {
+              if (e.target.tagName === 'BUTTON' && e.target !== closeBtn) {
+                  const action = e.target.dataset.action;
+                  const value = e.target.dataset.value;
+                  const font = e.target.dataset.font;
 
-                switch(action) {
-                    case 'font-size':
-                        changeFontSize(value);
-                        break;
-                    case 'contrast':
-                        changeContrast(value);
-                        break;
-                    case 'dyslexia-font':
-                        changeDyslexiaFont(font);
-                        break;
-                    case 'highlight-links':
-                        toggleClass('accessibility-highlight-links', 'userHighlightLinks');
-                        break;
-                    case 'big-cursor':
-                        toggleClass('accessibility-big-cursor', 'userBigCursor');
-                        break;
-                    case 'reset':
-                        resetAll();
-                        break;
-                }
-            }
-        });
+                  switch(action) {
+                      case 'font-size':
+                          changeFontSize(value);
+                          break;
+                      case 'contrast':
+                          changeContrast(value);
+                          break;
+                      case 'dyslexia-font':
+                          changeDyslexiaFont(font);
+                          break;
+                      case 'highlight-links':
+                          toggleClass('accessibility-highlight-links', 'userHighlightLinks');
+                          break;
+                      case 'big-cursor':
+                          toggleClass('accessibility-big-cursor', 'userBigCursor');
+                          break;
+                      case 'reset':
+                          resetAll();
+                          break;
+                  }
+              }
+          });
 
-        // Accessibility functions
-        function changeFontSize(value) {
-            const html = document.documentElement;
-            let currentSize = parseFloat(getComputedStyle(html).fontSize) || 16;
-            const step = 2;
+          // Accessibility functions
+          function changeFontSize(value) {
+              const html = document.documentElement;
+              let currentSize = parseFloat(getComputedStyle(html).fontSize) || 16;
+              const step = 2;
 
-            if (value === '1') currentSize += step;
-            else if (value === '-1') currentSize -= step;
-            else currentSize = 16;
+              if (value === '1') currentSize += step;
+              else if (value === '-1') currentSize -= step;
+              else currentSize = 16;
 
-            html.style.fontSize = currentSize + 'px';
-            localStorage.setItem('userFontSize', currentSize);
-        }
+              html.style.fontSize = currentSize + 'px';
+              localStorage.setItem('userFontSize', currentSize);
+          }
 
-        function changeContrast(mode) {
-            const body = document.body;
-            body.classList.remove('accessibility-contrast-dark', 'accessibility-contrast-light', 'accessibility-monochrome');
-            
-            if (mode !== 'reset') {
-                body.classList.add('accessibility-' + (mode === 'monochrome' ? 'monochrome' : 'contrast-' + mode));
-            }
-            
-            localStorage.setItem('userContrast', mode);
-        }
+          function changeContrast(mode) {
+              const body = document.body;
+              body.classList.remove('accessibility-contrast-dark', 'accessibility-contrast-light', 'accessibility-monochrome');
+              
+              if (mode !== 'reset') {
+                  body.classList.add('accessibility-' + (mode === 'monochrome' ? 'monochrome' : 'contrast-' + mode));
+              }
+              
+              localStorage.setItem('userContrast', mode);
+          }
 
-        function changeDyslexiaFont(fontType) {
-            document.body.classList.remove('accessibility-dyslexic', 'accessibility-comicsans', 'accessibility-normal-font');
-            
-            document.querySelectorAll('[data-action="dyslexia-font"]').forEach(btn => {
-                btn.classList.remove('active-font');
-            });
-            
-            if (fontType !== 'normal') {
-                document.body.classList.add('accessibility-' + fontType);
-                const activeBtn = document.querySelector(`[data-font="${fontType}"]`);
-                if (activeBtn) activeBtn.classList.add('active-font');
-            }
-            
-            localStorage.setItem('userDyslexiaFont', fontType);
-        }
+          function changeDyslexiaFont(fontType) {
+              document.body.classList.remove('accessibility-dyslexic', 'accessibility-comicsans', 'accessibility-normal-font');
+              
+              document.querySelectorAll('[data-action="dyslexia-font"]').forEach(btn => {
+                  btn.classList.remove('active-font');
+              });
+              
+              if (fontType !== 'normal') {
+                  document.body.classList.add('accessibility-' + fontType);
+                  const activeBtn = document.querySelector(`[data-font="${fontType}"]`);
+                  if (activeBtn) activeBtn.classList.add('active-font');
+              }
+              
+              localStorage.setItem('userDyslexiaFont', fontType);
+          }
 
-        function toggleClass(className, storageKey) {
-            document.body.classList.toggle(className);
-            localStorage.setItem(storageKey, document.body.classList.contains(className));
-        }
+          function toggleClass(className, storageKey) {
+              document.body.classList.toggle(className);
+              localStorage.setItem(storageKey, document.body.classList.contains(className));
+          }
 
-        function resetAll() {
-            document.body.className = document.body.className.replace(/\baccessibility-\w+/g, '');
-            document.documentElement.style.fontSize = '';
-            
-            document.querySelectorAll('[data-action="dyslexia-font"]').forEach(btn => {
-                btn.classList.remove('active-font');
-            });
-            
-            ['userFontSize', 'userContrast', 'userDyslexiaFont', 'userHighlightLinks', 'userBigCursor'].forEach(key => {
-                localStorage.removeItem(key);
-            });
-        }
+          function resetAll() {
+              document.body.className = document.body.className.replace(/\baccessibility-\w+/g, '');
+              document.documentElement.style.fontSize = '';
+              
+              document.querySelectorAll('[data-action="dyslexia-font"]').forEach(btn => {
+                  btn.classList.remove('active-font');
+              });
+              
+              ['userFontSize', 'userContrast', 'userDyslexiaFont', 'userHighlightLinks', 'userBigCursor'].forEach(key => {
+                  localStorage.removeItem(key);
+              });
+          }
 
-        // Load saved preferences
-        function loadSavedPreferences() {
-            const savedSize = localStorage.getItem('userFontSize');
-            if (savedSize) {
-                document.documentElement.style.fontSize = savedSize + 'px';
-            }
+          // Load saved preferences
+          function loadSavedPreferences() {
+              const savedSize = localStorage.getItem('userFontSize');
+              if (savedSize) {
+                  document.documentElement.style.fontSize = savedSize + 'px';
+              }
 
-            const savedContrast = localStorage.getItem('userContrast');
-            if (savedContrast && savedContrast !== 'reset') {
-                changeContrast(savedContrast);
-            }
+              const savedContrast = localStorage.getItem('userContrast');
+              if (savedContrast && savedContrast !== 'reset') {
+                  changeContrast(savedContrast);
+              }
 
-            const savedFont = localStorage.getItem('userDyslexiaFont');
-            if (savedFont && savedFont !== 'normal') {
-                changeDyslexiaFont(savedFont);
-            }
+              const savedFont = localStorage.getItem('userDyslexiaFont');
+              if (savedFont && savedFont !== 'normal') {
+                  changeDyslexiaFont(savedFont);
+              }
 
-            ['userHighlightLinks', 'userBigCursor'].forEach(key => {
-                if (localStorage.getItem(key) === 'true') {
-                    const className = key.replace('user', '').toLowerCase();
-                    document.body.classList.add('accessibility-' + className);
-                }
-            });
-        }
+              ['userHighlightLinks', 'userBigCursor'].forEach(key => {
+                  if (localStorage.getItem(key) === 'true') {
+                      const className = key.replace('user', '').toLowerCase();
+                      document.body.classList.add('accessibility-' + className);
+                  }
+              });
+          }
 
-        // Load preferences
-        loadSavedPreferences();
+          // Load preferences
+          loadSavedPreferences();
 
-        // Close panel on Escape
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && panel.getAttribute('aria-hidden') === 'false') {
-                closePanel();
-            }
-        });
-    }
+          // Close panel on Escape
+          document.addEventListener('keydown', function(e) {
+              if (e.key === 'Escape' && panel.getAttribute('aria-hidden') === 'false') {
+                  closePanel();
+              }
+          });
+      }
 
-    // Initialize when DOM is ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initAccessibilityWidget);
-    } else {
-        initAccessibilityWidget();
-    }
-})();
-</script>
+      // Initialize when DOM is ready
+      if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initAccessibilityWidget);
+      } else {
+          initAccessibilityWidget();
+      }
+    })();
+  </script>
 </body>
 </html>
