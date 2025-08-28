@@ -484,12 +484,13 @@
           <li><a href="#terms">תנאי שימוש</a></li>
           <li><a href="#privacy">מדיניות פרטיות</a></li>
           <li><a href="#contact">יצירת קשר</a></li>
-          <li>          <!-- Accessibility Widget -->
+          <li><!-- Accessibility Widget - Place before </body> -->
 <div id="accessibility-widget-container">
     <div class="accessibility-toggle" id="accessibilityToggle" role="button" aria-label="Accessibility Settings" tabindex="0">
         <span class="access-symbol">♿</span>
     </div>
-</div></li>
+</div>
+</li>
         </ul>
       </nav>
     </div>
@@ -727,6 +728,7 @@
     });
   </script>
 
+
 <div class="accessibility-overlay" id="accessibilityOverlay"></div>
 
 <div class="accessibility-panel" id="accessibilityPanel" aria-hidden="true">
@@ -752,7 +754,7 @@
 
     <div class="panel-section">
         <h3 class="section-title" id="readingTitle">Reading</h3>
-        <button class="access-btn" data-action="dyslexia-font" data-font="dyslex-kriyah" id="dyslexiaFontDyslex">Dyslex-Kriyah Font</button>
+        <button class="access-btn" data-action="dyslexia-font" data-font="dyslexic" id="dyslexiaFontDyslexic">Dyslexic Font</button>
         <button class="access-btn" data-action="dyslexia-font" data-font="comicsans" id="dyslexiaFontComic">Comic Sans Font</button>
         <button class="access-btn" data-action="dyslexia-font" data-font="normal" id="dyslexiaFontNormal">Normal Font</button>
         <button class="access-btn" data-action="highlight-links" id="highlightLinks">Highlight Links</button>
@@ -898,13 +900,24 @@
     border-color: #0056b3;
 }
 
+/* Font loading with multiple fallbacks */
+@font-face {
+    font-family: 'DyslexicFont';
+    src: url('dyslexia-hebrew-extended.otf') format('opentype'),
+         url('./dyslexia-hebrew-extended.otf') format('opentype'),
+         url('/dyslexia-hebrew-extended.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 /* Accessibility Styles */
-    .accessibility-dyslex-kriyah {
-      font-family: 'DyslexiaHebrew', 'OpenDyslexic', 'Comic Sans MS', Arial, sans-serif !important;
-      letter-spacing: 0.05em !important;
-      line-height: 1.8 !important;
-      font-size: 1.1em !important;
-    }
+.accessibility-dyslexic {
+    font-family: 'DyslexicFont', 'Comic Sans MS', 'Arial Rounded MT Bold', Arial, sans-serif !important;
+    letter-spacing: 0.05em !important;
+    line-height: 1.8 !important;
+    font-size: 1.1em !important;
+}
 
 .accessibility-comicsans {
     font-family: 'Comic Sans MS', 'Comic Sans', cursive, Arial, sans-serif !important;
@@ -1016,7 +1029,7 @@
             contrastLight: "Light Contrast", 
             contrastMono: "Monochrome",
             contrastReset: "Reset Colors",
-            dyslexiaFontDyslex: "Dyslex-Kriyah Font",
+            dyslexiaFontDyslexic: "Dyslexic Font",
             dyslexiaFontComic: "Comic Sans Font",
             dyslexiaFontNormal: "Normal Font",
             highlightLinks: "Highlight Links",
@@ -1037,7 +1050,7 @@
             contrastLight: "Светлый контраст",
             contrastMono: "Монохромный",
             contrastReset: "Сбросить цвета",
-            dyslexiaFontDyslex: "Шрифт Dyslex-Kriyah",
+            dyslexiaFontDyslexic: "Дислексический шрифт",
             dyslexiaFontComic: "Шрифт Comic Sans",
             dyslexiaFontNormal: "Обычный шрифт",
             highlightLinks: "Подчеркнуть ссылки",
@@ -1058,7 +1071,7 @@
             contrastLight: "ניגודיות בהירה",
             contrastMono: "מונוכרום",
             contrastReset: "איפוס צבעים",
-            dyslexiaFontDyslex: "גופן Dyslex-Kriyah",
+            dyslexiaFontDyslexic: "גופן דיסלקטי",
             dyslexiaFontComic: "גופן Comic Sans",
             dyslexiaFontNormal: "גופן רגיל",
             highlightLinks: "הדגש קישורים",
@@ -1101,7 +1114,7 @@
             'contrastLight': trans.contrastLight,
             'contrastMono': trans.contrastMono,
             'contrastReset': trans.contrastReset,
-            'dyslexiaFontDyslex': trans.dyslexiaFontDyslex,
+            'dyslexiaFontDyslexic': trans.dyslexiaFontDyslexic,
             'dyslexiaFontComic': trans.dyslexiaFontComic,
             'dyslexiaFontNormal': trans.dyslexiaFontNormal,
             'highlightLinks': trans.highlightLinks,
@@ -1223,14 +1236,14 @@
         }
 
         function changeDyslexiaFont(fontType) {
-            document.body.classList.remove('accessibility-dyslex-kriyah', 'accessibility-comicsans', 'accessibility-normal-font');
+            document.body.classList.remove('accessibility-dyslexic', 'accessibility-comicsans', 'accessibility-normal-font');
             
             document.querySelectorAll('[data-action="dyslexia-font"]').forEach(btn => {
                 btn.classList.remove('active-font');
             });
             
             if (fontType !== 'normal') {
-                document.body.classList.add('accessibility-' + (fontType === 'dyslex-kriyah' ? 'dyslex-kriyah' : fontType));
+                document.body.classList.add('accessibility-' + fontType);
                 const activeBtn = document.querySelector(`[data-font="${fontType}"]`);
                 if (activeBtn) activeBtn.classList.add('active-font');
             }
