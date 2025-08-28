@@ -660,6 +660,33 @@
       border-color: #0056b3;
     }
 
+    /* Language selector */
+    .language-selector {
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid #eee;
+    }
+
+    .language-btn {
+      display: inline-block;
+      margin: 5px;
+      padding: 8px 12px;
+      background: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .language-btn:hover {
+      background: #e0e0e0;
+    }
+
+    .language-btn.active {
+      background: #0056b3;
+      color: white;
+      border-color: #003d82;
+    }
+
     /* Font loading with multiple fallbacks */
     @font-face {
       font-family: 'DyslexicFont';
@@ -768,6 +795,18 @@
         left: 15px;
       }
     }
+    
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
   </style>
 </head>
 <body class="js-focus-visible">
@@ -807,7 +846,7 @@
       <div class="anchor"><h2>הצהרת נגישות</h2><a href="#access" class="hash" aria-hidden="true">#</a></div>
       <div class="card grid grid-2">
         <div>
-          <h3>המסגרת המשפטית והמחויבות</h3>
+          <h3>המסגרת המשפטית וה�מחויבות</h3>
           <p>
             חברת <strong>2M Media Creative Agency (ETUDE ח"פ 346776909)</strong> פועלת לקידום נגישות דיגיטלית בהתאם ל<strong>תקן הישראלי 5568 (מבוסס WCAG 2.0 AA)</strong>.
             אנו משקיעים מאמצים כדי שכל הגולשות והגולשים, לרבות אנשים עם מוגבלות, יוכלו להשתמש באתרינו בנוחות.
@@ -872,7 +911,7 @@
 
         <h3>קניין רוחני</h3>
         <p>
-          אלא אם צוין אחרת, זכויות הקניין הרוחני (טקסטים, לוגו, עיצוב וכד') שייכות ל-2M Media. אין להעתיק, להפיץ או לבצע שימוש מסחרי ללא אישור בכתב.
+          אלא אם צוין אחרת, זכויות הקניין הרוחני (טקסטים, לוגו, עיצוב וכד') שייכות ל-2M Media. אין להעתיק, להפיץ או לבצע שימוש מסחרי ללא אישור в�שת.
         </p>
 
         <h3>שינויים</h3>
@@ -988,6 +1027,13 @@
           <button class="access-btn" data-action="big-cursor" id="bigCursor">Big Cursor</button>
       </div>
 
+      <div class="panel-section language-selector">
+          <h3 class="section-title" id="languageTitle">Language</h3>
+          <button class="language-btn" data-lang="en" id="langEnglish">English</button>
+          <button class="language-btn" data-lang="he" id="langHebrew">עברית</button>
+          <button class="language-btn" data-lang="ru" id="langRussian">Русский</button>
+      </div>
+
       <div class="panel-section">
           <button class="access-btn" data-action="reset" id="resetAll" style="background: #ff4444; color: white;">
               Reset All Settings
@@ -1038,53 +1084,10 @@
       });
     }
 
-    // Accessibility adjustments: font size and high contrast
-    const htmlEl = document.documentElement;
-    let fontScale = 1;
-    const minScale = 0.85;
-    const maxScale = 1.4;
-
-    document.getElementById('incFont').addEventListener('click', () => {
-      fontScale = Math.min(maxScale, +(fontScale + 0.05).toFixed(2));
-      htmlEl.style.fontSize = `calc(${getComputedStyle(htmlEl).fontSize} * ${fontScale})`;
-      announce(`גודל גופן ${Math.round(fontScale * 100)}%`);
-    });
-
-    document.getElementById('decFont').addEventListener('click', () => {
-      fontScale = Math.max(minScale, +(fontScale - 0.05).toFixed(2));
-      htmlEl.style.fontSize = `calc(${getComputedStyle(htmlEl).fontSize} * ${fontScale})`;
-      announce(`גודל גופן ${Math.round(fontScale * 100)}%`);
-    });
-
-    const contrastBtn = document.getElementById('contrast');
-    contrastBtn.addEventListener('click', () => {
-      const on = htmlEl.classList.toggle('high-contrast');
-      contrastBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
-      announce(on ? 'מצב ניגודיות גבוהה הופעל' : 'מצב ניגודיות גבוהה בוטל');
-      
-      // Save preference to localStorage
-      if (on) {
-        localStorage.setItem('highContrast', 'true');
-      } else {
-        localStorage.removeItem('highContrast');
-      }
-    });
-
-    // Check for saved high contrast preference
-    if (localStorage.getItem('highContrast') === 'true') {
-      htmlEl.classList.add('high-contrast');
-      contrastBtn.setAttribute('aria-pressed', 'true');
-    }
-
     // ARIA live region for announcements
     const live = document.createElement('div');
     live.setAttribute('aria-live', 'polite');
     live.className = 'sr-only';
-    live.style.position = 'absolute';
-    live.style.width = '1px';
-    live.style.height = '1px';
-    live.style.overflow = 'hidden';
-    live.style.clip = 'rect(1px, 1px, 1px, 1px)';
     document.body.appendChild(live);
     
     function announce(msg) { 
@@ -1105,306 +1108,311 @@
     });
     
     // Accessibility Widget JavaScript
-    (function() {
-      'use strict';
-      
-      // Language detection and translations
+    document.addEventListener('DOMContentLoaded', function() {
+      // Language translations
       const translations = {
         en: {
-            panelTitle: "Accessibility Settings",
-            textSizeTitle: "Text Size",
-            contrastTitle: "Color & Contrast", 
-            readingTitle: "Reading",
-            textIncrease: "Increase Text (+)",
-            textNormal: "Normal Text",
-            textDecrease: "Decrease Text (-)",
-            contrastDark: "Dark Contrast",
-            contrastLight: "Light Contrast", 
-            contrastMono: "Monochrome",
-            contrastReset: "Reset Colors",
-            dyslexiaFontDyslexic: "Dyslexic Font",
-            dyslexiaFontComic: "Comic Sans Font",
-            dyslexiaFontNormal: "Normal Font",
-            highlightLinks: "Highlight Links",
-            bigCursor: "Big Cursor",
-            resetAll: "Reset All Settings",
-            close: "Close",
-            toggleLabel: "Accessibility Settings"
-        },
-        ru: {
-            panelTitle: "Настройки доступности",
-            textSizeTitle: "Размер текста",
-            contrastTitle: "Цвет и контраст",
-            readingTitle: "Чтение",
-            textIncrease: "Увеличить текст (+)",
-            textNormal: "Обычный текст", 
-            textDecrease: "Уменьшить текст (-)",
-            contrastDark: "Темный контраст",
-            contrastLight: "Светлый контраст",
-            contrastMono: "Монохромный",
-            contrastReset: "Сбросить цвета",
-            dyslexiaFontDyslexic: "Дислексический шрифт",
-            dyslexiaFontComic: "Шрифт Comic Sans",
-            dyslexiaFontNormal: "Обычный шрифт",
-            highlightLinks: "Подчеркнуть ссылки",
-            bigCursor: "Большой курсор",
-            resetAll: "Сбросить все настройки",
-            close: "Закрыть",
-            toggleLabel: "Настройки доступности"
+          panelTitle: "Accessibility Settings",
+          textSizeTitle: "Text Size",
+          contrastTitle: "Color & Contrast", 
+          readingTitle: "Reading",
+          languageTitle: "Language",
+          textIncrease: "Increase Text (+)",
+          textNormal: "Normal Text",
+          textDecrease: "Decrease Text (-)",
+          contrastDark: "Dark Contrast",
+          contrastLight: "Light Contrast", 
+          contrastMono: "Monochrome",
+          contrastReset: "Reset Colors",
+          dyslexiaFontDyslexic: "Dyslexic Font",
+          dyslexiaFontComic: "Comic Sans Font",
+          dyslexiaFontNormal: "Normal Font",
+          highlightLinks: "Highlight Links",
+          bigCursor: "Big Cursor",
+          resetAll: "Reset All Settings",
+          close: "Close",
+          toggleLabel: "Accessibility Settings"
         },
         he: {
-            panelTitle: "הגדרות נגישות",
-            textSizeTitle: "גודל טקסט",
-            contrastTitle: "צבע וניגודיות",
-            readingTitle: "קריאה",
-            textIncrease: "הגדל טקסט (+)",
-            textNormal: "גודל רגיל",
-            textDecrease: "הקטן טקסט (-)",
-            contrastDark: "ניגודיות כהה",
-            contrastLight: "ניגודיות בהירה",
-            contrastMono: "מונוכרום",
-            contrastReset: "איפוס צבעים",
-            dyslexiaFontDyslexic: "גופן דיסלקטי",
-            dyslexiaFontComic: "גופן Comic Sans",
-            dyslexiaFontNormal: "גופן רגיל",
-            highlightLinks: "הדגש קישורים",
-            bigCursor: "סמן גדול",
-            resetAll: "אפס כל ההגדרות",
-            close: "סגור",
-            toggleLabel: "הגדרות נגישות"
+          panelTitle: "הגדרות נגישות",
+          textSizeTitle: "גודל טקסט",
+          contrastTitle: "צבע וניגודיות",
+          readingTitle: "קריאה",
+          languageTitle: "שפה",
+          textIncrease: "הגדל טקסט (+)",
+          textNormal: "גודל רגיל",
+          textDecrease: "הקטן טקסט (-)",
+          contrastDark: "ניגודיות כהה",
+          contrastLight: "ניגודיות בהירה",
+          contrastMono: "מונוכרום",
+          contrastReset: "איפוס צבעים",
+          dyslexiaFontDyslexic: "גופן דיסלקטי",
+          dyslexiaFontComic: "גופן Comic Sans",
+          dyslexiaFontNormal: "גופן רגיל",
+          highlightLinks: "הדגש קישורים",
+          bigCursor: "סמן גדול",
+          resetAll: "אפס כל ההגדרות",
+          close: "סגור",
+          toggleLabel: "הגדרות נגישות"
+        },
+        ru: {
+          panelTitle: "Настройки доступности",
+          textSizeTitle: "Размер текста",
+          contrastTitle: "Цвет и контраст",
+          readingTitle: "Чтение",
+          languageTitle: "Язык",
+          textIncrease: "Увеличить текст (+)",
+          textNormal: "Обычный текст", 
+          textDecrease: "Уменьшить текст (-)",
+          contrastDark: "Темный контраст",
+          contrastLight: "Светлый контраст",
+          contrastMono: "Монохромный",
+          contrastReset: "Сбросить цвета",
+          dyslexiaFontDyslexic: "Дислексический шрифт",
+          dyslexiaFontComic: "Шрифт Comic Sans",
+          dyslexiaFontNormal: "Обычный шрифт",
+          highlightLinks: "Подчеркнуть ссылки",
+          bigCursor: "Большой курсор",
+          resetAll: "Сбросить все настройки",
+          close: "Закрыть",
+          toggleLabel: "Настройки доступности"
         }
       };
 
-      // Detect language
-      function detectLanguage() {
-          const htmlLang = document.documentElement.lang;
-          const userLang = navigator.language || navigator.userLanguage;
-          
-          if (htmlLang && translations[htmlLang]) {
-              return htmlLang;
-          }
-          
-          const primaryLang = userLang.split('-')[0];
-          if (translations[primaryLang]) {
-              return primaryLang;
-          }
-          
-          return 'en';
-      }
+      const toggleBtn = document.getElementById('accessibilityToggle');
+      const panel = document.getElementById('accessibilityPanel');
+      const closeBtn = document.getElementById('closePanel');
+      const overlay = document.getElementById('accessibilityOverlay');
+
+      if (!toggleBtn || !panel || !closeBtn || !overlay) return;
 
       // Apply translations
       function applyTranslations(lang) {
-          const trans = translations[lang];
-          const elements = {
-              'panelTitle': trans.panelTitle,
-              'textSizeTitle': trans.textSizeTitle,
-              'contrastTitle': trans.contrastTitle,
-              'readingTitle': trans.readingTitle,
-              'textIncrease': trans.textIncrease,
-              'textNormal': trans.textNormal,
-              'textDecrease': trans.textDecrease,
-              'contrastDark': trans.contrastDark,
-              'contrastLight': trans.contrastLight,
-              'contrastMono': trans.contrastMono,
-              'contrastReset': trans.contrastReset,
-              'dyslexiaFontDyslexic': trans.dyslexiaFontDyslexic,
-              'dyslexiaFontComic': trans.dyslexiaFontComic,
-              'dyslexiaFontNormal': trans.dyslexiaFontNormal,
-              'highlightLinks': trans.highlightLinks,
-              'bigCursor': trans.bigCursor,
-              'resetAll': trans.resetAll
-          };
+        const trans = translations[lang];
+        if (!trans) return;
 
-          for (const [id, text] of Object.entries(elements)) {
-              const element = document.getElementById(id);
-              if (element) element.textContent = text;
-          }
+        const elements = {
+          'panelTitle': trans.panelTitle,
+          'textSizeTitle': trans.textSizeTitle,
+          'contrastTitle': trans.contrastTitle,
+          'readingTitle': trans.readingTitle,
+          'languageTitle': trans.languageTitle,
+          'textIncrease': trans.textIncrease,
+          'textNormal': trans.textNormal,
+          'textDecrease': trans.textDecrease,
+          'contrastDark': trans.contrastDark,
+          'contrastLight': trans.contrastLight,
+          'contrastMono': trans.contrastMono,
+          'contrastReset': trans.contrastReset,
+          'dyslexiaFontDyslexic': trans.dyslexiaFontDyslexic,
+          'dyslexiaFontComic': trans.dyslexiaFontComic,
+          'dyslexiaFontNormal': trans.dyslexiaFontNormal,
+          'highlightLinks': trans.highlightLinks,
+          'bigCursor': trans.bigCursor,
+          'resetAll': trans.resetAll
+        };
 
-          const closePanel = document.getElementById('closePanel');
-          const accessibilityToggle = document.getElementById('accessibilityToggle');
-          
-          if (closePanel) closePanel.setAttribute('aria-label', trans.close);
-          if (accessibilityToggle) accessibilityToggle.setAttribute('aria-label', trans.toggleLabel);
-          
-          if (lang === 'he') {
-              const panel = document.getElementById('accessibilityPanel');
-              if (panel) panel.setAttribute('dir', 'rtl');
-          }
+        for (const [id, text] of Object.entries(elements)) {
+          const element = document.getElementById(id);
+          if (element) element.textContent = text;
+        }
+
+        if (closeBtn) closeBtn.setAttribute('aria-label', trans.close);
+        if (toggleBtn) toggleBtn.setAttribute('aria-label', trans.toggleLabel);
+        
+        // Set direction for RTL languages
+        if (lang === 'he') {
+          panel.setAttribute('dir', 'rtl');
+        } else {
+          panel.setAttribute('dir', 'ltr');
+        }
       }
 
-      // Main functionality
-      function initAccessibilityWidget() {
-          const currentLang = detectLanguage();
-          applyTranslations(currentLang);
-          
-          const toggleBtn = document.getElementById('accessibilityToggle');
-          const panel = document.getElementById('accessibilityPanel');
-          const closeBtn = document.getElementById('closePanel');
-          const overlay = document.getElementById('accessibilityOverlay');
-
-          if (!toggleBtn || !panel || !closeBtn || !overlay) return;
-
-          // Toggle panel
-          function togglePanel() {
-              const isHidden = panel.getAttribute('aria-hidden') === 'true';
-              panel.setAttribute('aria-hidden', !isHidden);
-              overlay.style.display = isHidden ? 'block' : 'none';
-              
-              if (isHidden) {
-                  panel.focus();
-              }
+      // Set active language button
+      function setActiveLanguage(lang) {
+        document.querySelectorAll('.language-btn').forEach(btn => {
+          btn.classList.remove('active');
+          if (btn.dataset.lang === lang) {
+            btn.classList.add('active');
           }
-
-          // Close panel
-          function closePanel() {
-              panel.setAttribute('aria-hidden', 'true');
-              overlay.style.display = 'none';
-          }
-
-          // Event listeners
-          toggleBtn.addEventListener('click', togglePanel);
-          closeBtn.addEventListener('click', closePanel);
-          overlay.addEventListener('click', closePanel);
-
-          // Keyboard navigation
-          toggleBtn.addEventListener('keypress', function(e) {
-              if (e.key === 'Enter' || e.key === ' ') {
-                  togglePanel();
-              }
-          });
-
-          // Handle accessibility actions
-          panel.addEventListener('click', function(e) {
-              if (e.target.tagName === 'BUTTON' && e.target !== closeBtn) {
-                  const action = e.target.dataset.action;
-                  const value = e.target.dataset.value;
-                  const font = e.target.dataset.font;
-
-                  switch(action) {
-                      case 'font-size':
-                          changeFontSize(value);
-                          break;
-                      case 'contrast':
-                          changeContrast(value);
-                          break;
-                      case 'dyslexia-font':
-                          changeDyslexiaFont(font);
-                          break;
-                      case 'highlight-links':
-                          toggleClass('accessibility-highlight-links', 'userHighlightLinks');
-                          break;
-                      case 'big-cursor':
-                          toggleClass('accessibility-big-cursor', 'userBigCursor');
-                          break;
-                      case 'reset':
-                          resetAll();
-                          break;
-                  }
-              }
-          });
-
-          // Accessibility functions
-          function changeFontSize(value) {
-              const html = document.documentElement;
-              let currentSize = parseFloat(getComputedStyle(html).fontSize) || 16;
-              const step = 2;
-
-              if (value === '1') currentSize += step;
-              else if (value === '-1') currentSize -= step;
-              else currentSize = 16;
-
-              html.style.fontSize = currentSize + 'px';
-              localStorage.setItem('userFontSize', currentSize);
-          }
-
-          function changeContrast(mode) {
-              const body = document.body;
-              body.classList.remove('accessibility-contrast-dark', 'accessibility-contrast-light', 'accessibility-monochrome');
-              
-              if (mode !== 'reset') {
-                  body.classList.add('accessibility-' + (mode === 'monochrome' ? 'monochrome' : 'contrast-' + mode));
-              }
-              
-              localStorage.setItem('userContrast', mode);
-          }
-
-          function changeDyslexiaFont(fontType) {
-              document.body.classList.remove('accessibility-dyslexic', 'accessibility-comicsans', 'accessibility-normal-font');
-              
-              document.querySelectorAll('[data-action="dyslexia-font"]').forEach(btn => {
-                  btn.classList.remove('active-font');
-              });
-              
-              if (fontType !== 'normal') {
-                  document.body.classList.add('accessibility-' + fontType);
-                  const activeBtn = document.querySelector(`[data-font="${fontType}"]`);
-                  if (activeBtn) activeBtn.classList.add('active-font');
-              }
-              
-              localStorage.setItem('userDyslexiaFont', fontType);
-          }
-
-          function toggleClass(className, storageKey) {
-              document.body.classList.toggle(className);
-              localStorage.setItem(storageKey, document.body.classList.contains(className));
-          }
-
-          function resetAll() {
-              document.body.className = document.body.className.replace(/\baccessibility-\w+/g, '');
-              document.documentElement.style.fontSize = '';
-              
-              document.querySelectorAll('[data-action="dyslexia-font"]').forEach(btn => {
-                  btn.classList.remove('active-font');
-              });
-              
-              ['userFontSize', 'userContrast', 'userDyslexiaFont', 'userHighlightLinks', 'userBigCursor'].forEach(key => {
-                  localStorage.removeItem(key);
-              });
-          }
-
-          // Load saved preferences
-          function loadSavedPreferences() {
-              const savedSize = localStorage.getItem('userFontSize');
-              if (savedSize) {
-                  document.documentElement.style.fontSize = savedSize + 'px';
-              }
-
-              const savedContrast = localStorage.getItem('userContrast');
-              if (savedContrast && savedContrast !== 'reset') {
-                  changeContrast(savedContrast);
-              }
-
-              const savedFont = localStorage.getItem('userDyslexiaFont');
-              if (savedFont && savedFont !== 'normal') {
-                  changeDyslexiaFont(savedFont);
-              }
-
-              ['userHighlightLinks', 'userBigCursor'].forEach(key => {
-                  if (localStorage.getItem(key) === 'true') {
-                      const className = key.replace('user', '').toLowerCase();
-                      document.body.classList.add('accessibility-' + className);
-                  }
-              });
-          }
-
-          // Load preferences
-          loadSavedPreferences();
-
-          // Close panel on Escape
-          document.addEventListener('keydown', function(e) {
-              if (e.key === 'Escape' && panel.getAttribute('aria-hidden') === 'false') {
-                  closePanel();
-              }
-          });
+        });
       }
 
-      // Initialize when DOM is ready
-      if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', initAccessibilityWidget);
-      } else {
-          initAccessibilityWidget();
+      // Toggle panel
+      function togglePanel() {
+        const isHidden = panel.getAttribute('aria-hidden') === 'true';
+        panel.setAttribute('aria-hidden', !isHidden);
+        overlay.style.display = isHidden ? 'block' : 'none';
+        
+        if (isHidden) {
+          panel.focus();
+        }
       }
-    })();
+
+      // Close panel
+      function closePanel() {
+        panel.setAttribute('aria-hidden', 'true');
+        overlay.style.display = 'none';
+      }
+
+      // Event listeners
+      toggleBtn.addEventListener('click', togglePanel);
+      closeBtn.addEventListener('click', closePanel);
+      overlay.addEventListener('click', closePanel);
+
+      // Keyboard navigation
+      toggleBtn.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          togglePanel();
+        }
+      });
+
+      // Language selection
+      document.querySelectorAll('.language-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const lang = this.dataset.lang;
+          applyTranslations(lang);
+          setActiveLanguage(lang);
+          localStorage.setItem('accessibilityLanguage', lang);
+          announce(`Language changed to ${lang}`);
+        });
+      });
+
+      // Handle accessibility actions
+      panel.addEventListener('click', function(e) {
+        if (e.target.tagName === 'BUTTON' && e.target !== closeBtn) {
+          const action = e.target.dataset.action;
+          const value = e.target.dataset.value;
+          const font = e.target.dataset.font;
+
+          switch(action) {
+            case 'font-size':
+              changeFontSize(value);
+              break;
+            case 'contrast':
+              changeContrast(value);
+              break;
+            case 'dyslexia-font':
+              changeDyslexiaFont(font);
+              break;
+            case 'highlight-links':
+              toggleClass('accessibility-highlight-links', 'userHighlightLinks');
+              break;
+            case 'big-cursor':
+              toggleClass('accessibility-big-cursor', 'userBigCursor');
+              break;
+            case 'reset':
+              resetAll();
+              break;
+          }
+        }
+      });
+
+      // Accessibility functions
+      function changeFontSize(value) {
+        const html = document.documentElement;
+        let currentSize = parseFloat(getComputedStyle(html).fontSize) || 16;
+        const step = 2;
+
+        if (value === '1') currentSize += step;
+        else if (value === '-1') currentSize -= step;
+        else currentSize = 16;
+
+        html.style.fontSize = currentSize + 'px';
+        localStorage.setItem('userFontSize', currentSize);
+        announce(`גודל טקסט שונה ל-${currentSize}px`);
+      }
+
+      function changeContrast(mode) {
+        const body = document.body;
+        body.classList.remove('accessibility-contrast-dark', 'accessibility-contrast-light', 'accessibility-monochrome');
+        
+        if (mode !== 'reset') {
+          body.classList.add('accessibility-' + (mode === 'monochrome' ? 'monochrome' : 'contrast-' + mode));
+        }
+        
+        localStorage.setItem('userContrast', mode);
+        announce(`מצב ניגודיות: ${mode}`);
+      }
+
+      function changeDyslexiaFont(fontType) {
+        document.body.classList.remove('accessibility-dyslexic', 'accessibility-comicsans', 'accessibility-normal-font');
+        
+        document.querySelectorAll('[data-action="dyslexia-font"]').forEach(btn => {
+          btn.classList.remove('active-font');
+        });
+        
+        if (fontType !== 'normal') {
+          document.body.classList.add('accessibility-' + fontType);
+          const activeBtn = document.querySelector(`[data-font="${fontType}"]`);
+          if (activeBtn) activeBtn.classList.add('active-font');
+        }
+        
+        localStorage.setItem('userDyslexiaFont', fontType);
+        announce(`גופן: ${fontType}`);
+      }
+
+      function toggleClass(className, storageKey) {
+        document.body.classList.toggle(className);
+        localStorage.setItem(storageKey, document.body.classList.contains(className));
+        announce(`${className} ${document.body.classList.contains(className) ? 'הופעל' : 'בוטל'}`);
+      }
+
+      function resetAll() {
+        document.body.className = document.body.className.replace(/\baccessibility-\w+/g, '');
+        document.documentElement.style.fontSize = '';
+        
+        document.querySelectorAll('[data-action="dyslexia-font"]').forEach(btn => {
+          btn.classList.remove('active-font');
+        });
+        
+        ['userFontSize', 'userContrast', 'userDyslexiaFont', 'userHighlightLinks', 'userBigCursor'].forEach(key => {
+          localStorage.removeItem(key);
+        });
+        
+        announce('כל ההגדרות אופסו');
+      }
+
+      // Load saved preferences
+      function loadSavedPreferences() {
+        const savedSize = localStorage.getItem('userFontSize');
+        if (savedSize) {
+          document.documentElement.style.fontSize = savedSize + 'px';
+        }
+
+        const savedContrast = localStorage.getItem('userContrast');
+        if (savedContrast && savedContrast !== 'reset') {
+          changeContrast(savedContrast);
+        }
+
+        const savedFont = localStorage.getItem('userDyslexiaFont');
+        if (savedFont && savedFont !== 'normal') {
+          changeDyslexiaFont(savedFont);
+        }
+
+        ['userHighlightLinks', 'userBigCursor'].forEach(key => {
+          if (localStorage.getItem(key) === 'true') {
+            const className = key.replace('user', '').toLowerCase();
+            document.body.classList.add('accessibility-' + className);
+          }
+        });
+
+        // Load language preference
+        const savedLang = localStorage.getItem('accessibilityLanguage') || 'en';
+        applyTranslations(savedLang);
+        setActiveLanguage(savedLang);
+      }
+
+      // Load preferences
+      loadSavedPreferences();
+
+      // Close panel on Escape
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && panel.getAttribute('aria-hidden') === 'false') {
+          closePanel();
+        }
+      });
+    });
   </script>
 </body>
 </html>
