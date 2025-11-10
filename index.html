@@ -1,1418 +1,226 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  <title>הצהרת נגישות · תנאי שימוש · מדיניות פרטיות | ristar.co</title>
-  <meta name="description" content="עמוד משפטי מאוחד: הצהרת נגישות, תנאי שימוש ומדיניות פרטיות עבור ristar.co ותתי-הדומיינים.">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📄</text></svg>">
-  <style>
-    :root {
-      --bg: #ffffff;
-      --fg: #0f172a;
-      --muted: #475569;
-      --accent: #2563eb;
-      --card: #f8fafc;
-      --border: #e2e8f0;
-      --focus: #f59e0b;
-      --success: #16a34a;
-      --danger: #dc2626;
-      --font-size-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
-      --font-size-sm: clamp(0.875rem, 0.8375rem + 0.1875vw, 1rem);
-      --font-size-lg: clamp(1.125rem, 1.0625rem + 0.3125vw, 1.375rem);
-      --font-size-xl: clamp(1.25rem, 1.175rem + 0.375vw, 1.5625rem);
-      --font-size-2xl: clamp(1.5rem, 1.4rem + 0.5vw, 2rem);
-      --font-size-3xl: clamp(1.875rem, 1.725rem + 0.75vw, 2.5rem);
-      --font-size-4xl: clamp(2.25rem, 2.05rem + 1vw, 3rem);
-      --spacing: clamp(0.5rem, 0.4rem + 0.5vw, 1rem);
-      --spacing-lg: clamp(1rem, 0.8rem + 1vw, 2rem);
-      --radius: 12px;
-      --transition: all 0.2s ease;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #222;
-        --fg: #f0f0f0;
-        --muted: #a0aec0;
-        --card: #333;
-        --border: #444;
-      }
-    }
-
-    html.high-contrast {
-      --bg: #000;
-      --fg: #fff;
-      --muted: #e5e7eb;
-      --accent: #0ea5e9;
-      --card: #111827;
-      --border: #374151;
-      --focus: #22d3ee;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-    }
-
-    html {
-      font-size: var(--font-size-base);
-      line-height: 1.7;
-      -webkit-text-size-adjust: 100%;
-      text-size-adjust: 100%;
-    }
-
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--fg);
-      font-family: "Heebo", "Rubik", "Segoe UI", "Arial", system-ui, sans-serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-      transition: var(--transition);
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    a:focus-visible,
-    button:focus-visible,
-    [tabindex]:focus-visible {
-      outline: 3px solid var(--focus);
-      outline-offset: 3px;
-    }
-
-    .wrap {
-      max-width: min(1100px, 95%);
-      margin-inline: auto;
-      padding: var(--spacing);
-    }
-
-    /* Header */
-    header {
-      position: sticky;
-      top: 0;
-      background: color-mix(in srgb, var(--bg) 90%, transparent);
-      backdrop-filter: saturate(180%) blur(8px);
-      border-bottom: 1px solid var(--border);
-      z-index: 100;
-    }
-
-    .topnav {
-      display: flex;
-      align-items: center;
-      gap: var(--spacing);
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, #9333ea, #2563eb);
-      display: grid;
-      place-items: center;
-      color: #fff;
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-
-    nav ul {
-      display: flex;
-      gap: var(--spacing);
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      display: block;
-      padding: 10px 14px;
-      border-radius: var(--radius);
-      min-height: 44px;
-      display: flex;
-      align-items: center;
-    }
-
-    nav a:hover {
-      background: var(--card);
-    }
-
-    /* Hero section */
-    .hero {
-      background: linear-gradient(180deg, var(--card), transparent);
-      border-bottom: 1px solid var(--border);
-      padding: var(--spacing-lg) 0;
-    }
-
-    .hero h1 {
-      font-size: var(--font-size-4xl);
-      margin: 10px 0 6px;
-      line-height: 1.2;
-    }
-
-    .hero p {
-      color: var(--muted);
-      margin: 0;
-      font-size: var(--font-size-lg);
-    }
-
-    /* Sections */
-    section {
-      padding-block: var(--spacing-lg);
-      border-bottom: 1px solid var(--border);
-    }
-
-    h2 {
-      font-size: var(--font-size-3xl);
-      margin: 0 0 10px;
-      line-height: 1.3;
-    }
-
-    h3 {
-      font-size: var(--font-size-xl);
-      margin: 16px 0 8px;
-      line-height: 1.4;
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: var(--spacing-lg);
-    }
-
-    .grid {
-      display: grid;
-      gap: var(--spacing-lg);
-    }
-
-    @media (min-width: 768px) {
-      .grid-2 {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    .domains {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .chip {
-      border: 1px solid var(--border);
-      background: var(--bg);
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-size: var(--font-size-sm);
-    }
-
-    /* Footer */
-    footer {
-      padding: var(--spacing-lg) 0;
-      color: var(--muted);
-      margin-top: auto;
-    }
-
-    /* Skip link */
-    .skip-link {
-      position: absolute;
-      inset-inline-start: var(--spacing);
-      top: -60px;
-      background: var(--accent);
-      color: #fff;
-      padding: 12px 16px;
-      border-radius: var(--radius);
-      z-index: 1001;
-      font-weight: 700;
-    }
-
-    .skip-link:focus {
-      top: var(--spacing);
-    }
-
-    /* Anchor links */
-    .anchor {
-      position: relative;
-    }
-
-    .anchor a.hash {
-      position: absolute;
-      inset-inline-end: -1.2em;
-      top: 50%;
-      transform: translateY(-50%);
-      opacity: 0.5;
-      font-size: var(--font-size-lg);
-      transition: var(--transition);
-    }
-
-    .anchor a.hash:hover {
-      opacity: 1;
-    }
-
-    /* Form styles */
-    form {
-      display: grid;
-      gap: var(--spacing);
-    }
-
-    label {
-      font-weight: 600;
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    input,
-    textarea,
-    select {
-      padding: 12px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--bg);
-      color: var(--fg);
-      font-family: inherit;
-      font-size: inherit;
-      width: 100%;
-      max-width: 100%;
-    }
-
-    textarea {
-      min-height: 140px;
-      resize: vertical;
-    }
-
-    .actions {
-      display: flex;
-      gap: var(--spacing);
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      border-radius: var(--radius);
-      padding: 12px 20px;
-      cursor: pointer;
-      font-size: inherit;
-      font-weight: 600;
-      min-height: 44px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--transition);
-    }
-
-    .btn:hover {
-      filter: brightness(1.1);
-      transform: translateY(-2px);
-    }
-
-    .btn.secondary {
-      background: transparent;
-      color: var(--accent);
-      border: 2px solid var(--accent);
-    }
-
-    /* Google Translate */
-    #google_translate_element {
-      display: inline-block;
-      border: 1px solid var(--border);
-      padding: 8px 12px;
-      border-radius: var(--radius);
-      background: var(--bg);
-      min-height: 44px;
-    }
-
-    /* Lists */
-    ul, ol {
-      padding-inline-start: 1.5em;
-      margin-bottom: 1em;
-    }
-
-    li {
-      margin-bottom: 0.5em;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      .topnav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      
-      nav ul {
-        flex-direction: column;
-        width: 100%;
-      }
-      
-      nav a {
-        width: 100%;
-      }
-      
-      .a11y-toolbar {
-        flex-direction: row;
-        inset-inline-start: 50%;
-        transform: translateX(50%);
-        bottom: var(--spacing);
-      }
-      
-      .grid-2 {
-        grid-template-columns: 1fr;
-      }
-      
-      .hero h1 {
-        font-size: var(--font-size-3xl);
-      }
-    }
-
-    @media (max-width: 480px) {
-      :root {
-        --font-size-base: clamp(0.9rem, 0.9rem + 0.25vw, 1rem);
-      }
-      
-      .actions {
-        flex-direction: column;
-      }
-      
-      .btn {
-        width: 100%;
-      }
-    }
-
-    /* Print styles */
-    @media print {
-      .a11y-toolbar,
-      #google_translate_element,
-      .skip-link,
-      form {
-        display: none !important;
-      }
-      
-      body {
-        font-size: 12pt;
-        line-height: 1.5;
-        color: #000;
-        background: #fff;
-      }
-      
-      a {
-        color: #000;
-        text-decoration: underline;
-      }
-      
-      .card {
-        border: 1px solid #000;
-        background: #fff;
-      }
-    }
-
-    /* Reduced motion */
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        transition: none !important;
-        animation: none !important;
-      }
-      
-      .a11y-toolbar button:hover,
-      .btn:hover {
-        transform: none !important;
-      }
-    }
-
-    /* Focus visible polyfill */
-    .js-focus-visible :focus:not(.focus-visible) {
-      outline: none;
-    }
-
-    /* High contrast improvements */
-    html.high-contrast {
-      --bg: #000;
-      --fg: #fff;
-      --card: #111;
-      --border: #fff;
-      
-      scrollbar-color: #fff #000;
-    }
-    
-    html.high-contrast ::-webkit-scrollbar {
-      width: 14px;
-    }
-    
-    html.high-contrast ::-webkit-scrollbar-thumb {
-      background: #fff;
-      border: 3px solid #000;
-      border-radius: 7px;
-    }
-    
-    html.high-contrast ::-webkit-scrollbar-track {
-      background: #000;
-    }
-    
-    /* Collapsible menu styles */
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 24px;
-      cursor: pointer;
-      padding: 10px;
-      border-radius: var(--radius);
-      min-height: 44px;
-      min-width: 44px;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    .menu-toggle:hover {
-      background: var(--card);
-    }
-    
-    .nav-container {
-      display: flex;
-      align-items: center;
-      gap: var(--spacing);
-    }
-    
-    @media (max-width: 900px) {
-      .menu-toggle {
-        display: flex;
-      }
-      
-      nav {
-        position: fixed;
-        top: 70px;
-        right: 0;
-        background: var(--bg);
-        width: 280px;
-        height: calc(100vh - 70px);
-        border-left: 1px solid var(--border);
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
-        z-index: 99;
-        padding: var(--spacing);
-        overflow-y: auto;
-      }
-      
-      nav.active {
-        transform: translateX(0);
-      }
-      
-      nav ul {
-        flex-direction: column;
-      }
-      
-      .accessibility-toggle {
-        position: fixed;
-        bottom: 20px;
-        left: 20px;
-        z-index: 1000;
-      }
-    }
-    
-    /* Accessibility Widget Styles */
-    .accessibility-widget-container {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      z-index: 100000;
-      font-family: Arial, sans-serif;
-    }
-
-    .accessibility-toggle {
-      width: 60px;
-      height: 60px;
-      background: #0056b3;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      transition: all 0.3s ease;
-      border: 2px solid #fff;
-    }
-
-    .accessibility-toggle:hover {
-      background: #003d82;
-      transform: scale(1.05);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-    }
-
-    .accessibility-toggle:active {
-      transform: scale(0.95);
-    }
-
-    .access-symbol {
-      font-size: 28px;
-      color: white;
-      filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.3));
-    }
-
-    .accessibility-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 99999;
-      display: none;
-    }
-
-    .accessibility-panel {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: white;
-      border: 2px solid #333;
-      padding: 25px;
-      z-index: 100001;
-      border-radius: 12px;
-      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
-      max-width: 350px;
-      width: 90%;
-      max-height: 80vh;
-      overflow-y: auto;
-      display: none;
-    }
-
-    .accessibility-panel[aria-hidden="false"] {
-      display: block;
-    }
-
-    .panel-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      padding-bottom: 15px;
-      border-bottom: 2px solid #eee;
-    }
-
-    .panel-title {
-      margin: 0;
-      font-size: 1.5em;
-      color: #333;
-    }
-
-    .close-btn {
-      background: none;
-      border: none;
-      font-size: 28px;
-      cursor: pointer;
-      color: #666;
-      padding: 5px;
-      line-height: 1;
-    }
-
-    .close-btn:hover {
-      color: #000;
-    }
-
-    .panel-section {
-      margin-bottom: 25px;
-    }
-
-    .section-title {
-      margin: 0 0 12px 0;
-      font-size: 1.2em;
-      color: #444;
-      font-weight: 600;
-    }
-
-    .access-btn {
-      display: block;
-      width: 100%;
-      padding: 12px 15px;
-      margin: 8px 0;
-      background: #f8f9fa;
-      border: 2px solid #ddd;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 14px;
-      transition: all 0.2s ease;
-      text-align: center;
-    }
-
-    .access-btn:hover {
-      background: #e9ecef;
-      border-color: #0056b3;
-    }
-
-    /* Language selector */
-    .language-selector {
-      margin-top: 20px;
-      padding-top: 15px;
-      border-top: 1px solid #eee;
-    }
-
-    .language-btn {
-      display: inline-block;
-      margin: 5px;
-      padding: 8px 12px;
-      background: #f0f0f0;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .language-btn:hover {
-      background: #e0e0e0;
-    }
-
-    .language-btn.active {
-      background: #0056b3;
-      color: white;
-      border-color: #003d82;
-    }
-
-    /* Font loading with multiple fallbacks */
-    @font-face {
-      font-family: 'DyslexicFont';
-      src: url('dyslexia-hebrew-extended.otf') format('opentype'),
-           url('./dyslexia-hebrew-extended.otf') format('opentype'),
-           url('/dyslexia-hebrew-extended.otf') format('opentype');
-      font-weight: normal;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    /* Accessibility Styles */
-    .accessibility-dyslexic {
-      font-family: 'DyslexicFont', 'Comic Sans MS', 'Arial Rounded MT Bold', Arial, sans-serif !important;
-      letter-spacing: 0.05em !important;
-      line-height: 1.8 !important;
-      font-size: 1.1em !important;
-    }
-
-    .accessibility-comicsans {
-      font-family: 'Comic Sans MS', 'Comic Sans', cursive, Arial, sans-serif !important;
-      letter-spacing: 0.03em !important;
-      line-height: 1.7 !important;
-    }
-
-    .accessibility-normal-font {
-      font-family: inherit !important;
-      letter-spacing: normal !important;
-      line-height: normal !important;
-      font-size: inherit !important;
-    }
-
-    .access-btn.active-font {
-      background: #0056b3 !important;
-      color: white !important;
-      border-color: #003d82 !important;
-    }
-
-    .accessibility-highlight-links a {
-      text-decoration: underline !important;
-      background-color: yellow !important;
-      color: #000 !important;
-      padding: 2px 4px !important;
-    }
-
-    .accessibility-contrast-dark {
-      background-color: #000 !important;
-      color: #fff !important;
-    }
-
-    .accessibility-contrast-dark *:not(.accessibility-panel):not(.accessibility-panel *) {
-      background-color: #000 !important;
-      color: #fff !important;
-      border-color: #fff !important;
-    }
-
-    .accessibility-contrast-light {
-      background-color: #fff !important;
-      color: #000 !important;
-    }
-
-    .accessibility-contrast-light *:not(.accessibility-panel):not(.accessibility-panel *) {
-      background-color: #fff !important;
-      color: #000 !important;
-      border-color: #000 !important;
-    }
-
-    .accessibility-monochrome {
-      filter: grayscale(100%) !important;
-    }
-
-    .accessibility-big-cursor {
-      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='10' fill='%23000000'/%3E%3C/svg%3E") 12 12, auto !important;
-    }
-
-    .accessibility-big-cursor * {
-      cursor: inherit !important;
-    }
-
-    /* RTL support */
-    [dir="rtl"] .accessibility-widget-container {
-      right: auto;
-      left: 20px;
-    }
-
-    [dir="rtl"] .accessibility-panel {
-      text-align: right;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .accessibility-toggle {
-        width: 50px;
-        height: 50px;
-        bottom: 15px;
-        right: 15px;
-      }
-      
-      .accessibility-panel {
-        width: 95%;
-        padding: 20px 15px;
-      }
-      
-      [dir="rtl"] .accessibility-toggle {
-        right: auto;
-        left: 15px;
-      }
-    }
-    
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rising Star Manager — Law / מסמכים משפטיים</title>
+<style>
+  body { font-family: Arial, sans-serif; background:#f6f7fb; margin:0; color:#111; line-height:1.6; }
+  header { background:#0b4f8a; color:#fff; padding:18px 20px; text-align:center; }
+  header small { display:block; font-size:12px; opacity:0.9; margin-top:6px; }
+  nav { background:#fff; padding:12px 18px; border-bottom:1px solid #e0e3ea; position:sticky; top:0; z-index:20; }
+  nav a { margin-left:14px; color:#0b4f8a; text-decoration:none; font-weight:600; }
+  main { max-width:1000px; margin:20px auto; padding:0 16px 60px; }
+  section { background:#fff; border-radius:8px; padding:20px; margin-bottom:18px; box-shadow:0 6px 18px rgba(11,79,138,0.06); }
+  h1,h2,h3 { margin:8px 0; }
+  p, li { font-size:15px; }
+  .meta { font-weight:700; color:#0b4f8a; margin-bottom:10px; }
+  ul { padding-inline-start:1.2rem; }
+  .small { font-size:13px; color:#555; }
+  footer { text-align:center; padding:18px; color:#666; font-size:13px; }
+  /* make code blocks readable if user copies */
+  pre { white-space:pre-wrap; word-break:break-word; background:#f4f6fb; padding:12px; border-radius:6px; }
+</style>
 </head>
-<body class="js-focus-visible">
-  <a class="skip-link" href="#main">דלג/י לתוכן</a>
+<body>
 
-  <header>
-    <div class="wrap topnav" role="navigation" aria-label="ניווט ראשי">
-      <div class="brand" aria-label="Rising Star / 2M Media">
-        <div class="logo" aria-hidden="true">RS</div>
-        <strong>ristar.co · עמוד משפטי</strong>
-      </div>
-      <div class="nav-container">
-        <button class="menu-toggle" id="menuToggle" aria-label="הצג/הסתר תפריט">
-          <span aria-hidden="true">☰</span>
-        </button>
-        <nav id="mainNav">
-          <ul>
-            <li><a href="#access">הצהרת נגישות</a></li>
-            <li><a href="#terms">תנאי שימוש</a></li>
-            <li><a href="#privacy">מדיניות פרטיות</a></li>
-            <li><a href="#contact">יצירת קשר</a></li>
-          </ul>
-        </nav>
-        <span id="google_translate_element" aria-label="בחירת שפה"></span>
-      </div>
-    </div>
-  </header>
+<header>
+  Rising Star Manager — Law / מסמכים משפטיים
+  <small>גרסא מעודכנת</small>
+</header>
 
-  <main id="main" class="wrap" tabindex="-1">
-    <section class="hero" aria-labelledby="title">
-      <h1 id="title">הצהרת נגישות · תנאי שימוש · מדיניות פרטיות</h1>
-      <p>עמוד מאוחד עבור <strong>www.ristar.co</strong> ותתי-הדומיינים: results.ristar.co, registration.ristar.co, law.ristar.co.</p>
-    </section>
+<nav>
+  <a href="#privacy">מדיניות פרטיות</a>
+  <a href="#terms">תנאי שימוש</a>
+  <a href="#accessibility">הצהרת נגישות</a>
+</nav>
 
-    <!-- Accessibility statement -->
-    <section id="access" class="grid">
-      <div class="anchor"><h2>הצהרת נגישות</h2><a href="#access" class="hash" aria-hidden="true">#</a></div>
-      <div class="card grid grid-2">
-        <div>
-          <h3>המסגרת המשפטית וה�מחויבות</h3>
-          <p>
-            חברת <strong>2M Media Creative Agency (ETUDE ח"פ 346776909)</strong> פועלת לקידום נגישות דיגיטלית בהתאם ל<strong>תקן הישראלי 5568 (מבוסס WCAG 2.0 AA)</strong>.
-            אנו משקיעים מאמצים כדי שכל הגולשות והגולשים, לרבות אנשים עם מוגבלות, יוכלו להשתמש באתרינו בנוחות.
-          </p>
-          <p>
-            בשלב זה האתר/ים בתהליך הטמעת התאמות נגישות. עם הגעה למחזור שנתי של <strong>100,000 ₪</strong> ומעלה, ניישם באופן מלא את החובות החלות לפי דין.
-          </p>
-          <h3>תחולה</h3>
-          <div class="domains" aria-label="רשימת דומיינים בתחולה">
-            <span class="chip" aria-label="דומיין">www.ristar.co</span>
-            <span class="chip" aria-label="תת-דומיין">results.ristar.co</span>
-            <span class="chip" aria-label="תת-דומיין">registration.ristar.co</span>
-            <span class="chip" aria-label="תת-דומיין">law.ristar.co</span>
-          </div>
-        </div>
-        <div>
-          <h3>התאמות עיקריות</h3>
-          <ul>
-            <li>ניווט מלא באמצעות מקלדת והתמקדות (Focus) מובחנת.</li>
-            <li>טקסט חלופי לתמונות ותיאורי כפתורים.</li>
-            <li>יחסי ניגודיות לפי ההנחיות וכפתור ניגודיות גבוהה.</li>
-            <li>מבנה סמנטי וכותרות היררכיות (H1–H3) ואריה (ARIA) לפי הצורך.</li>
-            <li>תמיכה בהגדלה/הקטנה של גודל גופן.</li>
-          </ul>
-          <h3>פניות בנושא נגישות</h3>
-          <p>אם נתקלתם בקושי נגישות, נשמח לסייע:</p>
-          <ul>
-            <li>מיכאל מוקרושוב — <a href="tel:+972547798676" rel="nofollow">054-7798676</a></li>
-            <li>דוא"ל: <a href="mailto:2mmedia.il@gmail.com">2mmedia.il@gmail.com</a></li>
-          </ul>
-          <p>אנא ציינו תיאור הבעיה, הדפדפן והמכשיר, וקישור לעמוד הרלוונטי.</p>
-        </div>
-      </div>
-    </section>
+<main>
 
-    <!-- Terms of use -->
-    <section id="terms" class="grid">
-      <div class="anchor"><h2>תנאי שימוש</h2><a href="#terms" class="hash" aria-hidden="true">#</a></div>
-      <div class="card">
-        <h3>כללי</h3>
-        <p>
-          תנאים אלה חלים על השימוש באתר <strong>ristar.co</strong> ותתי-הדומיינים שלו (results.ristar.co, registration.ristar.co, law.ristar.co). השימוש באתר מהווה את הסכמתך לתנאים אלה.
-        </p>
+<!-- PRIVACY -->
+<section id="privacy" aria-labelledby="privacy-h">
+  <h1 id="privacy-h">מדיניות פרטיות</h1>
+  <p class="meta">גרסא מעודכנת</p>
 
-        <h3>מטרת האתר</h3>
-        <ul>
-          <li>דף נחיתה לפרסום מוצר/שירות.</li>
-          <li>רישום לאירועים של מארגן חיצוני.</li>
-          <li>פרסום תוצאות תחרויות מטעם מארגן חיצוני המופעלות באמצעות <strong>Rising Star Manager</strong>.</li>
-        </ul>
+  <p>Law<br>
+  מדיניות פרטיות זו (להלן: "המדיניות") מתארת את האופן שבו ETUDE, עוסק מורשה 346776909, מרחוב הבה''דים 4, 22, ראשון לציון (להלן: "העסק" או "אנו") אוסף, משתמש, שומר וחושף מידע הנאסף ממשתמשי האתר (להלן: "האתר") המציג מידע אודות שירותי "Rising Star" (להלן: "השירות").</p>
 
-        <h3>תוכן משתמשים ותשלומים</h3>
-        <ul>
-          <li>אין אפשרות ליצירת תוכן משתמשים (תגובות/עלאות קבצים וכד').</li>
-          <li>אין תשלומים באתר.</li>
-        </ul>
+  <p>מדיניות זו מהווה חלק בלתי נפרד מתנאי השימוש באתר.</p>
 
-        <h3>הגבלת אחריות</h3>
-        <p>
-          <strong>2M Media</strong> אינה אחראית לתוכן, לארגון או לקיום האירועים המתפרסמים/מתופעלים באמצעות Rising Star Manager. האחריות מוטלת על המארגן החיצוני.
-        </p>
+  <h2>1. מנהל האתר ופרטי התקשרות</h2>
+  <p>העסק, ETUDE (ע.מ 346776909), הוא הבעלים והמפעיל של האתר.<br>
+  לכל שאלה בנוגע למדיניות זו או לטיפול במידע שלך, ניתן לפנות אלינו בכתובת: הבה''דים 4, 22, ראשון לציון, בטלפון 0534726458, או בדוא"ל שצוין באתר.</p>
 
-        <h3>קניין רוחני</h3>
-        <p>
-          אלא אם צוין אחרת, זכויות הקניין הרוחני (טקסטים, לוגו, עיצוב וכד') שייכות ל-2M Media. אין להעתיק, להפיץ או לבצע שימוש מסחרי ללא אישור в�שת.
-        </p>
+  <h2>2. המידע שאנו אוספים</h2>
+  <p>אנו אוספים את סוגי המידע הבאים:</p>
 
-        <h3>שינויים</h3>
-        <p>
-          ייתכן כי נעדכן תנאים אלה מעת לעת. המשך השימוש באתר לאחר שינוי מהווה הסכמה לתנאים המעודכנים.
-        </p>
-      </div>
-    </section>
+  <h3>א. מידע הנמסר על ידך:</h3>
+  <p>אנו אוספים מידע אישי שאתה מוסר לנו באופן יזום בעת מילוי טופס יצירת קשר, טופס הרשמה לתחרות, או טופס ייעוץ. מידע זה עשוי לכלול:</p>
+  <ul>
+    <li>שם מלא (של המשתתף ו/או של איש הקשר המבצע את הרישום, כגון הורה או מורה).</li>
+    <li>כתובת דוא"ל.</li>
+    <li>מספר טלפון.</li>
+    <li>תאריך לידה (לצורך ניהול התחרות וסיווג קטגוריות גיל).</li>
+    <li>מידע נוסף הנדרש על ידי מארגן התחרות הספציפית (למשל, שם מורה, בית ספר).</li>
+    <li>תוכן פנייתך אלינו (בטופס יצירת קשר או ייעוץ).</li>
+  </ul>
 
-    <!-- Privacy policy -->
-    <section id="privacy" class="grid">
-      <div class="anchor"><h2>מדיניות פרטיות</h2><a href="#privacy" class="hash" aria-hidden="true">#</a></div>
-      <div class="card grid grid-2">
-        <div>
-          <h3>אילו נתונים נאספים</h3>
-          <ul>
-            <li>שם מלא</li>
-            <li>דוא"ל</li>
-            <li>טלפון</li>
-            <li>נתונים סטטיסטיים אנונימיים באמצעות Google Analytics (כגון כתובת IP, דפים נצפים וזמני ביקור)</li>
-          </ul>
-          <h3>למה אנחנו משתמשים בנתונים</h3>
-          <ul>
-            <li>עיבוד רישום לאירועים ותקשורת עם הנרשמים.</li>
-            <li>שיפור תפעול האתר וניתוח שימוש.</li>
-          </ul>
-          <h3>שיתוף מידע</h3>
-          <p>איננו משתפים מידע אישי עם צדדים שלישיים, למעט אם קיימת חובה חוקית.</p>
-        </div>
-        <div>
-          <h3>Cookies וטכנולוגיות דומות</h3>
-          <p>האתר עושה שימוש בקובצי Cookies לצורך אנליטיקה וחוויית שימוש. ניתן לחסום Cookies דרך הגדרות הדפדפן.</p>
-          <h3>אבטחת מידע</h3>
-          <p>ננקטות אמצעי אבטחה סבירים להגן על המידע האישי.</p>
-          <h3>דין וסמכות שיפוט</h3>
-          <p>המדיניות כפופה לדיני מדינת ישראל.</p>
-        </div>
-      </div>
-    </section>
+  <h3>ב. מידע הנאסף באופן אוטומטי:</h3>
+  <p>כאשר אתה משתמש באתר, אנו עשויים לאסוף מידע טכני באופן אוטומטי, כגון:</p>
+  <ul>
+    <li>כתובת IP, סוג דפדפן, שפת מערכת ההפעלה.</li>
+    <li>נתוני שימוש וסטטיסטיקה אנונימיים באמצעות "עוגיות" (Cookies) של שירותי צד שלישי כמו Google Analytics.</li>
+  </ul>
 
-    <!-- Contact form -->
-    <section id="contact" class="grid">
-      <div class="anchor"><h2>יצירת קשר</h2><a href="#contact" class="hash" aria-hidden="true">#</a></div>
-      <div class="card">
-        <form aria-describedby="contactHelp" onsubmit="event.preventDefault(); contactAck();">
-          <p id="contactHelp" style="color: var(--muted);">נשמח לסייע בכל נושא משפטי/נגישות. ניתן גם לפנות ישירות בטלפון או במייל.</p>
-          <div>
-            <label for="name">שם מלא</label>
-            <input id="name" name="name" type="text" autocomplete="name" required>
-          </div>
-          <div>
-            <label for="email">דוא"ל</label>
-            <input id="email" name="email" type="email" autocomplete="email" required>
-          </div>
-          <div>
-            <label for="message">פנייה</label>
-            <textarea id="message" name="message" placeholder="תאר/י את הבקשה או בעיית הנגישות"></textarea>
-          </div>
-          <div class="actions">
-            <button class="btn" type="submit">שליחה</button>
-            <a class="btn secondary" href="mailto:2mmedia.il@gmail.com?subject=%D7%A4%D7%A0%D7%99%D7%99%D7%94%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8">שליחה בדוא"ל</a>
-            <a class="btn secondary" href="tel:+972547798676">התקשרות</a>
-          </div>
-          <div aria-live="polite" id="ack" style="margin-top: var(--spacing);"></div>
-        </form>
-      </div>
-    </section>
+  <h2>3. הסכמה לאיסוף מידע (במיוחד בנוגע לקטינים)</h2>
+  <p>השימוש באתר, ובפרט מילוי טפסי הרישמה, מהווה הסכמה לאיסוף ועיבוד המידע שלך בהתאם למדיניות זו.<br>
+  במידה והנך רושם לתחרות אדם אחר, ובמיוחד קטין (מתחת לגיל 18), הנך מצהיר ומתחייב כי:</p>
+  <ol>
+    <li>הנך ההורה, האפוטרופוס החוקי, או איש צוות חינוכי (כגון מורה) הפועל מטעמם.</li>
+    <li>קיבלת את הסכמתם המפורשת של ההורים או האפוטרופסים החוקיים של הקטין למסירת המידע האישי שלו לצורך רישום וניהול התחרות.</li>
+  </ol>
 
-    <footer class="wrap" role="contentinfo">
-      <p>
-        © <span id="year"></span> 2M Media Creative Agency (ETUDE ח"פ 346776909). כל הזכויות שמורות. | 
-        <a href="#access">נגישות</a> · <a href="#terms">תנאים</a> · <a href="#privacy">פרטיות</a>
-      </p>
-    </footer>
-  </main>
+  <h2>4. מטרות השימוש במידע</h2>
+  <p>אנו נשתמש במידע שנאסף למטרות הבאות:</p>
+  <ul>
+    <li>כדי לספק את השירות: לרשום משתתפים לתחרויות, לנהל את הליך התחרות באופן ממוחשב, ולהציג את תוצאות התחרויות באתר.</li>
+    <li>כדי ליצור קשר: למענה לפניות, שליחת עדכונים חשובים והודעות שירות הקשורות לתחרות (לא הודעות שיווקיות).</li>
+    <li>כדי לנהל מאגר נתונים פנימי של משתתפים ומורים עבור תחרויות עתידיות, במטרה לייעל הליכי רישום.</li>
+    <li>כדי לשפר את האתר: לניתוח סטטיסטי ושיפור חוויית המשתמש (באמצעות Google Analytics).</li>
+    <li>לצורך מילוי דרישות חוקיות ומשפטיות, אם נידרש לכך.</li>
+  </ul>
 
-  <!-- Accessibility Widget -->
-  <div class="accessibility-widget-container">
-    <div class="accessibility-toggle" id="accessibilityToggle" role="button" aria-label="Accessibility Settings" tabindex="0">
-        <span class="access-symbol">♿</span>
-    </div>
-  </div>
+  <h2>5. מסירת מידע לצדדים שלישיים</h2>
+  <p>אנו לא מוכרים, סוחרים או משכירים את המידע האישי שלך.<br>
+  אנו עשויים לשתף מידע עם צדדים שלישיים רק במקרים הבאים:</p>
+  <ul>
+    <li>מארגני התחרויות: אנו נעביר למארגן התחרות הספציפית אליה נרשמת את פרטי הרישום שלך ושל המשתתפים שרשמת, ככל שיידרש לצורך ניהול התחרות.</li>
+    <li>ספקי שירותים: אנו משתמשים ב-Google Analytics לצורכי סטטיסטיקה. שירות זה אוסף מידע בהתאם למדיניות הפרטיות שלו. השימוש ב-Google Analytics עשוי לכלול העברת נתונים לשרתים מחוץ לישראל.</li>
+    <li>צווי בית משפט: אם נידרש לכך על פי דין, צו בית משפט או רשות מוסמכת.</li>
+  </ul>
 
-  <div class="accessibility-overlay" id="accessibilityOverlay"></div>
+  <h2>6. אבטחת מידע</h2>
+  <p>אנו נוקטים באמצעי אבטחה סבירים כדי להגן על המידע האישי שלך. האתר מאובטח בפרוטוקול HTTPS (SSL), והגישה למאגרי הנתונים מוגבלת ומוגנת באמצעות סיסמאות ואימות דו-שלבי.<br>
+  עם זאת, אין מערכת המאובטחת ב-100%, ואיננו יכולים להבטיח באופן מוחלט כי המידע יהיה חסין מפני גישה בלתי מורשית.</p>
 
-  <div class="accessibility-panel" id="accessibilityPanel" aria-hidden="true">
-      <div class="panel-header">
-          <h2 class="panel-title" id="panelTitle">Accessibility Settings</h2>
-          <button class="close-btn" id="closePanel" aria-label="Close">×</button>
-      </div>
+  <h2>7. שמירת מידע</h2>
+  <p>אנו שומרים את המידע האישי לפרק הזמן הדרוש למילוי המטרות המתוארות במדיניות זו.<br>
+  ככלל, מידע אישי מזהה (למעט שם, דוא"ל וטלפון של איש הקשר שביצע את הרישום) יימחק ממאגרינו הפעילים בתוך שנה אחת (1) לאחר סיום האירוע (התחרות), או במועד אחר כפי שיוסכם עם מארגן התחרות.</p>
 
-      <div class="panel-section">
-          <h3 class="section-title" id="textSizeTitle">Text Size</h3>
-          <button class="access-btn" data-action="font-size" data-value="1" id="textIncrease">Increase Text (+)</button>
-          <button class="access-btn" data-action="font-size" data-value="0" id="textNormal">Normal Text</button>
-          <button class="access-btn" data-action="font-size" data-value="-1" id="textDecrease">Decrease Text (-)</button>
-      </div>
+  <h2>8. זכות לעיון, תיקון ומחיקת מידע (זכות העיון)</h2>
+  <p>על פי חוק הגנת הפרטיות, התשמ"א-1981, הנך זכאי (או הורה/אפוטרופוס של קטין שנרשם) לעיין במידע אודותיך המוחזק במאגרינו.<br>
+  כדי לממש זכות זו, או כדי לבקש תיקון של מידע שאינו נכון או מחיקה של מידע (בכפוף למגבלות משפטיות), יש לפנות אלינו בכתב (בדוא"ל או בדואר רשום) בפרטי ההתקשרות המופיעים בסעיף 1.<br>
+  אנו נטפל בבקשתך לאחר אימות זהותך.</p>
 
-      <div class="panel-section">
-          <h3 class="section-title" id="contrastTitle">Color & Contrast</h3>
-          <button class="access-btn" data-action="contrast" data-value="dark" id="contrastDark">Dark Contrast</button>
-          <button class="access-btn" data-action="contrast" data-value="light" id="contrastLight">Light Contrast</button>
-          <button class="access-btn" data-action="contrast" data-value="monochrome" id="contrastMono">Monochrome</button>
-          <button class="access-btn" data-action="contrast" data-value="reset" id="contrastReset">Reset Colors</button>
-      </div>
+  <h2>9. שינויים במדיניות הפרטיות</h2>
+  <p>אנו שומרים לעצמנו את הזכות לעדכן מדיניות זו מעת לעת. אנו ממליצים למשתמשים לבקר בדף זה לעתים קרובות כדי להתעדכן בשינויים.</p>
 
-      <div class="panel-section">
-          <h3 class="section-title" id="readingTitle">Reading</h3>
-          <button class="access-btn" data-action="dyslexia-font" data-font="dyslexic" id="dyslexiaFontDyslexic">Dyslexic Font</button>
-          <button class="access-btn" data-action="dyslexia-font" data-font="comicsans" id="dyslexiaFontComic">Comic Sans Font</button>
-          <button class="access-btn" data-action="dyslexia-font" data-font="normal" id="dyslexiaFontNormal">Normal Font</button>
-          <button class="access-btn" data-action="highlight-links" id="highlightLinks">Highlight Links</button>
-          <button class="access-btn" data-action="big-cursor" id="bigCursor">Big Cursor</button>
-      </div>
+  <p class="small"><strong>תאריך עדכון אחרון: 08 בנובמבר 2025</strong></p>
+</section>
 
-      <div class="panel-section language-selector">
-          <h3 class="section-title" id="languageTitle">Language</h3>
-          <button class="language-btn" data-lang="en" id="langEnglish">English</button>
-          <button class="language-btn" data-lang="he" id="langHebrew">עברית</button>
-          <button class="language-btn" data-lang="ru" id="langRussian">Русский</button>
-      </div>
+<!-- TERMS -->
+<section id="terms" aria-labelledby="terms-h">
+  <h1 id="terms-h">תנאי שימוש</h1>
+  <p class="meta">גרסא מעודכנת</p>
 
-      <div class="panel-section">
-          <button class="access-btn" data-action="reset" id="resetAll" style="background: #ff4444; color: white;">
-              Reset All Settings
-          </button>
-      </div>
-  </div>
+  <p>ברוכים הבאים לאתר האינטרנט של ETUDE (ע.מ 346776909), המציג מידע אודות שירותי "Rising Star" (להלן: "האתר" ו-"השירות" בהתאמה).</p>
 
-  <!-- Google Translate -->
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({pageLanguage: 'he', includedLanguages: 'en,ru,uk,ar,fr,es,de', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-    }
-  </script>
-  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <p>השימוש באתר, לרבות גלישה ו/או רישום לתחרויות המוצגות בו, כפוף לתנאים המפורטים להלן (להלן: "תנאי השימוש"). אנא קרא אותם בעיון. השימוש באתר מהווה הסכמה מצידך לתנאים אלה.</p>
 
-  <script>
-    // Current year in footer
-    document.getElementById('year').textContent = new Date().getFullYear();
+  <h2>1. כללי</h2>
+  <p>האתר מספק מידע אודות השירות, המשמש לניהול ממוחשב של תחרויות. כמו כן, האתר משמש כפלטפורמה לרישום מקוון לתחרויות המאורגנות באמצעות השירות, ולהצגת תוצאותיהן.<br>
+  האתר מנוהל ומופעל על ידי ETUDE, ע.מ 346776909 (להלן: "מפעיל האתר").</p>
 
-    // Menu toggle functionality
-    const menuToggle = document.getElementById('menuToggle');
-    const mainNav = document.getElementById('mainNav');
-    
-    if (menuToggle && mainNav) {
-      menuToggle.addEventListener('click', () => {
-        mainNav.classList.toggle('active');
-        const isExpanded = mainNav.classList.contains('active');
-        menuToggle.setAttribute('aria-expanded', isExpanded);
-      });
-      
-      // Close menu when clicking outside
-      document.addEventListener('click', (e) => {
-        if (mainNav.classList.contains('active') && 
-            !mainNav.contains(e.target) && 
-            !menuToggle.contains(e.target)) {
-          mainNav.classList.remove('active');
-          menuToggle.setAttribute('aria-expanded', 'false');
-        }
-      });
-      
-      // Close menu on escape key
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && mainNav.classList.contains('active')) {
-          mainNav.classList.remove('active');
-          menuToggle.setAttribute('aria-expanded', 'false');
-          menuToggle.focus();
-        }
-      });
-    }
+  <h2>2. שימוש באתר</h2>
+  <p>השימוש באתר מותר לכל גיל. עם זאת, רישום לתחרויות המיועדות לקטינים (מתחת לגיל 18) חייב להתבצע על ידי הורה, אפוטרופוס חוקי, או גורם חינוכי מוסמך (כגון מורה) שקיבל את הסכמת ההורים לכך.<br>
+  המשתמש מתחייב למסור פרטים נכונים ומדויקים בעת הרישום.</p>
 
-    // ARIA live region for announcements
-    const live = document.createElement('div');
-    live.setAttribute('aria-live', 'polite');
-    live.className = 'sr-only';
-    document.body.appendChild(live);
-    
-    function announce(msg) { 
-      live.textContent = ''; 
-      setTimeout(() => live.textContent = msg, 50); 
-    }
+  <h2>3. קניין רוחני</h2>
+  <p>כל זכויות הקניין הרוחני באתר, לרבות העיצוב, הקוד, התכנים, הטקסטים, וכן שם המותג והלוגו "Rising Star", שייכים באופן בלעדי למפעיל האתר (ETUDE).<br>
+  אין להעתיק, לשכפל, להפיץ, לתרגם או לעשות כל שימוש מסחרי במידע או בחלק כלשהו מהאתר ללא קבלת אישור מפורש בכתב ממפעיל האתר.</p>
 
-    function contactAck() {
-      const ack = document.getElementById('ack');
-      ack.textContent = 'ההודעה נשלחה (הדגמה). ניצור קשר בקרוב.';
-      ack.style.color = 'var(--success)';
-      announce('הטופס נשלח בהצלחה');
-    }
+  <p>בנוגע לדפי הנחיתה של התחרויות הספציפיות: התכנים, הלוגואים והתמונות המוצגים בדפים אלה הם רכושם של מארגני התחרות, ומוצגים באתר במסגרת מתן השירות לאותו מארגן.</p>
 
-    // Add focus-visible class for keyboard navigation
-    document.addEventListener('DOMContentLoaded', function() {
-      document.body.classList.add('js-focus-visible');
-    });
-    
-    // Accessibility Widget JavaScript
-    document.addEventListener('DOMContentLoaded', function() {
-      // Language translations
-      const translations = {
-        en: {
-          panelTitle: "Accessibility Settings",
-          textSizeTitle: "Text Size",
-          contrastTitle: "Color & Contrast", 
-          readingTitle: "Reading",
-          languageTitle: "Language",
-          textIncrease: "Increase Text (+)",
-          textNormal: "Normal Text",
-          textDecrease: "Decrease Text (-)",
-          contrastDark: "Dark Contrast",
-          contrastLight: "Light Contrast", 
-          contrastMono: "Monochrome",
-          contrastReset: "Reset Colors",
-          dyslexiaFontDyslexic: "Dyslexic Font",
-          dyslexiaFontComic: "Comic Sans Font",
-          dyslexiaFontNormal: "Normal Font",
-          highlightLinks: "Highlight Links",
-          bigCursor: "Big Cursor",
-          resetAll: "Reset All Settings",
-          close: "Close",
-          toggleLabel: "Accessibility Settings"
-        },
-        he: {
-          panelTitle: "הגדרות נגישות",
-          textSizeTitle: "גודל טקסט",
-          contrastTitle: "צבע וניגודיות",
-          readingTitle: "קריאה",
-          languageTitle: "שפה",
-          textIncrease: "הגדל טקסט (+)",
-          textNormal: "גודל רגיל",
-          textDecrease: "הקטן טקסט (-)",
-          contrastDark: "ניגודיות כהה",
-          contrastLight: "ניגודיות בהירה",
-          contrastMono: "מונוכרום",
-          contrastReset: "איפוס צבעים",
-          dyslexiaFontDyslexic: "גופן דיסלקטי",
-          dyslexiaFontComic: "גופן Comic Sans",
-          dyslexiaFontNormal: "גופן רגיל",
-          highlightLinks: "הדגש קישורים",
-          bigCursor: "סמן גדול",
-          resetAll: "אפס כל ההגדרות",
-          close: "סגור",
-          toggleLabel: "הגדרות נגישות"
-        },
-        ru: {
-          panelTitle: "Настройки доступности",
-          textSizeTitle: "Размер текста",
-          contrastTitle: "Цвет и контраст",
-          readingTitle: "Чтение",
-          languageTitle: "Язык",
-          textIncrease: "Увеличить текст (+)",
-          textNormal: "Обычный текст", 
-          textDecrease: "Уменьшить текст (-)",
-          contrastDark: "Темный контраст",
-          contrastLight: "Светлый контраст",
-          contrastMono: "Монохромный",
-          contrastReset: "Сбросить цвета",
-          dyslexiaFontDyslexic: "Дислексический шрифт",
-          dyslexiaFontComic: "Шрифт Comic Sans",
-          dyslexiaFontNormal: "Обычный шрифт",
-          highlightLinks: "Подчеркнуть ссылки",
-          bigCursor: "Большой курсор",
-          resetAll: "Сбросить все настройки",
-          close: "Закрыть",
-          toggleLabel: "Настройки доступности"
-        }
-      };
+  <h2>4. שימוש אסור</h2>
+  <p>המשתמש מתחייב שלא לעשות שימוש באתר למטרות הבאות:</p>
+  <ol>
+    <li>כל פעולה בלתי חוקית, לרבות הונאה או התחזות.</li>
+    <li>ניסיון לפגוע בפעילותו התקינה של האתר, לרבות באמצעות הפצת וירוסים, "ספאם", או ביצוע התקפות (כגון DDoS).</li>
+    <li>ניסיון לבצע "פריצה" (Hacking) או לקבל גישה בלתי מורשית לשרתי האתר או למידע של משתמשים אחרים.</li>
+  </ol>
 
-      const toggleBtn = document.getElementById('accessibilityToggle');
-      const panel = document.getElementById('accessibilityPanel');
-      const closeBtn = document.getElementById('closePanel');
-      const overlay = document.getElementById('accessibilityOverlay');
+  <p>מפעיל האתר שומר לעצמו את הזכות לנקוט בכל האמצעים החוקיים העומדים לרשותו, לרבות העברת מידע לרשויות אכיפת החוק, כנגד משתמש שיפר תנאים אלה.</p>
 
-      if (!toggleBtn || !panel || !closeBtn || !overlay) return;
+  <h2>5. הגבלת אחריות (חשוב!)</h2>
+  <p>השירות והאתר מוצעים למשתמש כפי שהם (As Is - "כמות שהוא").<br>
+  מפעיל האתר עושה מאמצים להבטיח את פעילותו התקינה והרציפה של האתר, אך אינו מתחייב כי הפעילות תהיה נטולת טעויות, תקלות, הפרעות או נפילות.<br>
+  מפעיל האתר לא יישא באחריות לכל נזק, ישיר או עקיף, שייגרם למשתמש או לצד שלישי כלשהו כתוצאה מ:</p>
+  <ol>
+    <li>שימוש (או אי-יכולת להשתמש) באתר.</li>
+    <li>טעויות או אי-דיוקים במידע המוצג באתר, לרבות תוצאות תחרויות.</li>
+    <li>תכנים (לרבות חוקים, תמונות או לוגואים) שסופקו על ידי מארגני התחרויות ומוצגים בדפי התחרות. האחריות על תכנים אלו חלה על המארגנים בלבד.</li>
+    <li>החלטות שיפוט, ביטול או דחייה של תחרות על ידי מארגן התחרות. מפעיל האתר מספק פלטפורמה טכנית בלבד ואינו צד להליך השיפוט או לארגון התחרות עצמה.</li>
+  </ol>
 
-      // Apply translations
-      function applyTranslations(lang) {
-        const trans = translations[lang];
-        if (!trans) return;
+  <h2>6. קישורים חיצוניים</h2>
+  <p>האתר עשוי להכיל קישורים לאתרים חיצוניים. מפעיל האתר אינו אחראי לתכנים או למדיניות הפרטיות של אתרים אלה.</p>
 
-        const elements = {
-          'panelTitle': trans.panelTitle,
-          'textSizeTitle': trans.textSizeTitle,
-          'contrastTitle': trans.contrastTitle,
-          'readingTitle': trans.readingTitle,
-          'languageTitle': trans.languageTitle,
-          'textIncrease': trans.textIncrease,
-          'textNormal': trans.textNormal,
-          'textDecrease': trans.textDecrease,
-          'contrastDark': trans.contrastDark,
-          'contrastLight': trans.contrastLight,
-          'contrastMono': trans.contrastMono,
-          'contrastReset': trans.contrastReset,
-          'dyslexiaFontDyslexic': trans.dyslexiaFontDyslexic,
-          'dyslexiaFontComic': trans.dyslexiaFontComic,
-          'dyslexiaFontNormal': trans.dyslexiaFontNormal,
-          'highlightLinks': trans.highlightLinks,
-          'bigCursor': trans.bigCursor,
-          'resetAll': trans.resetAll
-        };
+  <h2>7. הפסקת שירות</h2>
+  <p>מפעיל האתר שומר לעצמו את הזכות לסרב להעניק שירות, לחסום גישה לאתר או לסיים התקשרות עם כל גורם (לרבות מארגן תחרות), לפי שיקול דעתו הבלעדי, ובפרט אם התעורר סכסוך קודם או אם הופרו תנאי שימוש אלה.</p>
 
-        for (const [id, text] of Object.entries(elements)) {
-          const element = document.getElementById(id);
-          if (element) element.textContent = text;
-        }
+  <h2>8. שינויים בתנאי השימוש</h2>
+  <p>מפעיל האתר רשאי לשנות את תנאי השימוש מעת לעת, ללא הודעה מוקדמת. הנוסח המעודכן יפורסם באתר ויחייב מרגע פרסומו.</p>
 
-        if (closeBtn) closeBtn.setAttribute('aria-label', trans.close);
-        if (toggleBtn) toggleBtn.setAttribute('aria-label', trans.toggleLabel);
-        
-        // Set direction for RTL languages
-        if (lang === 'he') {
-          panel.setAttribute('dir', 'rtl');
-        } else {
-          panel.setAttribute('dir', 'ltr');
-        }
-      }
+  <h2>9. סמכות שיפוט</h2>
+  <p>על תנאי שימוש אלה יחולו אך ורק דיני מדינת ישראל. סמכות השיפוט הבלעדית בכל סכסוך הנוגע לאתר או לשירות תהיה נתונה לבתי המשפט המוסמכים במחוז מרכז.</p>
+</section>
 
-      // Set active language button
-      function setActiveLanguage(lang) {
-        document.querySelectorAll('.language-btn').forEach(btn => {
-          btn.classList.remove('active');
-          if (btn.dataset.lang === lang) {
-            btn.classList.add('active');
-          }
-        });
-      }
+<!-- ACCESSIBILITY -->
+<section id="accessibility" aria-labelledby="access-h">
+  <h1 id="access-h">הצהרת נגישות</h1>
+  <p class="meta">גרסא מעודכנת</p>
 
-      // Toggle panel
-      function togglePanel() {
-        const isHidden = panel.getAttribute('aria-hidden') === 'true';
-        panel.setAttribute('aria-hidden', !isHidden);
-        overlay.style.display = isHidden ? 'block' : 'none';
-        
-        if (isHidden) {
-          panel.focus();
-        }
-      }
+  <p>הצהרת נגישות</p>
 
-      // Close panel
-      function closePanel() {
-        panel.setAttribute('aria-hidden', 'true');
-        overlay.style.display = 'none';
-      }
+  <p>אנו ב-ETUDE, המפעילים של שירות "Rising Star", רואים חשיבות עליונה בהנגשת האתר שלנו לאנשים עם מוגבלויות, מתוך תפיסה של שוויון זכויות והזדמנויות לכלל האוכלוסייה.</p>
 
-      // Event listeners
-      toggleBtn.addEventListener('click', togglePanel);
-      closeBtn.addEventListener('click', closePanel);
-      overlay.addEventListener('click', closePanel);
+  <p>אנו משקיעים מאמצים על מנת להפוך אתר זה לנגיש ככל האפשר, בהתאם להוראות חוק שוויון זכויות לאנשים עם מוגבלויות (התשנ&quot;ח-1998) והתקנות על פיו (תקנות שוויון זכויות לאנשים עם מוגבלויות (התאמות נגישות לשירות)).</p>
 
-      // Keyboard navigation
-      toggleBtn.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          togglePanel();
-        }
-      });
+  <h2>1. רמת הנגישות ומאפיינים</h2>
+  <p>אנו שואפים להתאים את האתר לדרישות הנגישות של התקן הישראלי (ת"י 5568) ברמת AA, המבוסס על הנחיות WCAG 2.0 הבינלאומיות.<br>
+  באתר מוטמע תוסף נגישות ייעודי שפותח על ידי "2M Media", המאפשר לבצע התאמות נגישות מגוונות.</p>
 
-      // Language selection
-      document.querySelectorAll('.language-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-          const lang = this.dataset.lang;
-          applyTranslations(lang);
-          setActiveLanguage(lang);
-          localStorage.setItem('accessibilityLanguage', lang);
-          announce(`Language changed to ${lang}`);
-        });
-      });
+  <h2>2. תכונות הנגישות באתר (באמצעות התוסף)</h2>
+  <p>באמצעות לחיצה על אייקון הנגישות, נפתח תפריט המאפשר למשתמש לבחור בהתאמות הבאות:</p>
+  <ul>
+    <li>התאמת גודל גופן (הגדלה, הקטנה, חזרה למצב רגיל)</li>
+    <li>התאמות צבע וניגודיות (ניגודיות כהה, ניגודיות בהירה, צבעי מונוכרום, איפוס)</li>
+    <li>התאמות קריאה (פונט דיסלקטי, פונט קומיק סנס, הדגשת קישורים)</li>
+    <li>סמן גדול</li>
+  </ul>
 
-      // Handle accessibility actions
-      panel.addEventListener('click', function(e) {
-        if (e.target.tagName === 'BUTTON' && e.target !== closeBtn) {
-          const action = e.target.dataset.action;
-          const value = e.target.dataset.value;
-          const font = e.target.dataset.font;
+  <h2>3. מצב הנגישות</h2>
+  <p>תהליך הנגשת האתר נמצא בעיצומו, ומרבית התכונות המרכזיות באתר כבר עומדות בדרישות. אנו ממשיכים לפעול לשיפור הנגישות ולהשלמת כל ההתאמות הנדרשות.<br>
+  אנו מודעים לכך שעל אף מאמצינו, ייתכן שחלקים מסוימים באתר טרם הונגשו במלואם.</p>
 
-          switch(action) {
-            case 'font-size':
-              changeFontSize(value);
-              break;
-            case 'contrast':
-              changeContrast(value);
-              break;
-            case 'dyslexia-font':
-              changeDyslexiaFont(font);
-              break;
-            case 'highlight-links':
-              toggleClass('accessibility-highlight-links', 'userHighlightLinks');
-              break;
-            case 'big-cursor':
-              toggleClass('accessibility-big-cursor', 'userBigCursor');
-              break;
-            case 'reset':
-              resetAll();
-              break;
-          }
-        }
-      });
+  <h2>4. סייגים לנגישות</h2>
+  <p>באתר עשויים להיות מוצגים תכנים (כגון לוגו או תמונות) המסופקים על ידי מארגני התחרויות. אנו עושים כמיטב יכולתנו לוודא כי גם תכנים אלו יהיו נגישים, אך איננו יכולים לקחת אחריות מלאה על תכנים שמקורם בצד שלישי.</p>
 
-      // Accessibility functions
-      function changeFontSize(value) {
-        const html = document.documentElement;
-        let currentSize = parseFloat(getComputedStyle(html).fontSize) || 16;
-        const step = 2;
+  <h2>5. פרטי רכז הנגישות</h2>
+  <p>אנו מבינים את חשיבות המשוב שלכם. אם נתקלתם בבעיית נגישות כלשהי באתר, או אם יש לכם שאלה או הצעה לשיפור, נשמח אם תפנו לרכז הנגישות שלנו:</p>
+  <p><strong>שם: מיכאל מוקרושוב<br>
+  טלפון: 0547798676<br>
+  דוא"ל: 2mmedia.il@gmail.com</strong></p>
 
-        if (value === '1') currentSize += step;
-        else if (value === '-1') currentSize -= step;
-        else currentSize = 16;
+  <h2>6. תאריך עדכון ההצהרה</h2>
+  <p>הצהרת הנגישות עודכנה לאחרונה בתאריך: 12 באוגוסט 2025</p>
+</section>
 
-        html.style.fontSize = currentSize + 'px';
-        localStorage.setItem('userFontSize', currentSize);
-        announce(`גודל טקסט שונה ל-${currentSize}px`);
-      }
+</main>
 
-      function changeContrast(mode) {
-        const body = document.body;
-        body.classList.remove('accessibility-contrast-dark', 'accessibility-contrast-light', 'accessibility-monochrome');
-        
-        if (mode !== 'reset') {
-          body.classList.add('accessibility-' + (mode === 'monochrome' ? 'monochrome' : 'contrast-' + mode));
-        }
-        
-        localStorage.setItem('userContrast', mode);
-        announce(`מצב ניגודיות: ${mode}`);
-      }
+<footer>
+  גרסא מעודכנת — Rising Star Manager · ETUDE (ע.מ 346776909)
+</footer>
 
-      function changeDyslexiaFont(fontType) {
-        document.body.classList.remove('accessibility-dyslexic', 'accessibility-comicsans', 'accessibility-normal-font');
-        
-        document.querySelectorAll('[data-action="dyslexia-font"]').forEach(btn => {
-          btn.classList.remove('active-font');
-        });
-        
-        if (fontType !== 'normal') {
-          document.body.classList.add('accessibility-' + fontType);
-          const activeBtn = document.querySelector(`[data-font="${fontType}"]`);
-          if (activeBtn) activeBtn.classList.add('active-font');
-        }
-        
-        localStorage.setItem('userDyslexiaFont', fontType);
-        announce(`גופן: ${fontType}`);
-      }
-
-      function toggleClass(className, storageKey) {
-        document.body.classList.toggle(className);
-        localStorage.setItem(storageKey, document.body.classList.contains(className));
-        announce(`${className} ${document.body.classList.contains(className) ? 'הופעל' : 'בוטל'}`);
-      }
-
-      function resetAll() {
-        document.body.className = document.body.className.replace(/\baccessibility-\w+/g, '');
-        document.documentElement.style.fontSize = '';
-        
-        document.querySelectorAll('[data-action="dyslexia-font"]').forEach(btn => {
-          btn.classList.remove('active-font');
-        });
-        
-        ['userFontSize', 'userContrast', 'userDyslexiaFont', 'userHighlightLinks', 'userBigCursor'].forEach(key => {
-          localStorage.removeItem(key);
-        });
-        
-        announce('כל ההגדרות אופסו');
-      }
-
-      // Load saved preferences
-      function loadSavedPreferences() {
-        const savedSize = localStorage.getItem('userFontSize');
-        if (savedSize) {
-          document.documentElement.style.fontSize = savedSize + 'px';
-        }
-
-        const savedContrast = localStorage.getItem('userContrast');
-        if (savedContrast && savedContrast !== 'reset') {
-          changeContrast(savedContrast);
-        }
-
-        const savedFont = localStorage.getItem('userDyslexiaFont');
-        if (savedFont && savedFont !== 'normal') {
-          changeDyslexiaFont(savedFont);
-        }
-
-        ['userHighlightLinks', 'userBigCursor'].forEach(key => {
-          if (localStorage.getItem(key) === 'true') {
-            const className = key.replace('user', '').toLowerCase();
-            document.body.classList.add('accessibility-' + className);
-          }
-        });
-
-        // Load language preference
-        const savedLang = localStorage.getItem('accessibilityLanguage') || 'en';
-        applyTranslations(savedLang);
-        setActiveLanguage(savedLang);
-      }
-
-      // Load preferences
-      loadSavedPreferences();
-
-      // Close panel on Escape
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && panel.getAttribute('aria-hidden') === 'false') {
-          closePanel();
-        }
-      });
-    });
-  </script>
 </body>
 </html>
